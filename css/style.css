@@ -76,6 +76,7 @@ section{
    font-size: 1.7rem;
    padding:1rem 3rem;
    cursor: pointer;
+   border-radius: 30px;
 }
 
 .btn:hover{
@@ -689,6 +690,19 @@ body {
 .active{
    color: var(--tomato)!important;
 }
+
+
+/* register/login  */
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+
+}
+
+
 
 
 /* media queries  */

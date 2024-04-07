@@ -1,23 +1,23 @@
-<?php session_start(); ?>
+<?php 
+session_start();
 
-<?php
-   $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8', 'root','');
-   if(isset($_POST['valider'])){
-      if(!empty($_POST['pseudo']) AND !empty($_POST['message']) AND isset($_POST['Email']) AND !empty($_POST['Email']) AND isset($_POST['Note'])) {  
-         $pseudo = htmlspecialchars($_POST['pseudo']);
-         $message = nl2br(htmlspecialchars($_POST['message']));
-         $Email = htmlspecialchars($_POST['Email']);
-         $Note = htmlspecialchars($_POST['Note']);
+$bdd = new PDO('mysql:host=localhost;dbname=login_register_db;charset=utf8', 'root', '');
 
+if(isset($_POST['valider'])){
+   if(!empty($_POST['commentaire']) AND isset($_POST['Note']) AND isset($_SESSION['userID'])) {  
+      $commentaire = nl2br(htmlspecialchars($_POST['commentaire']));
+      $Note = htmlspecialchars($_POST['Note']);
+      $userID = $_SESSION['userID']; // Assumed that user's ID is stored in the session when they logged in
 
-         $insererMessage = $bdd->prepare("INSERT INTO messages(pseudo, message, Email, Note) VALUES(?, ?, ?, ?)");
-         $insererMessage->execute(array($pseudo,$message, $Email, $Note));
-         
+      // The insertion query now includes the user's ID
+      $insererCommentaire = $bdd->prepare("INSERT INTO evaluation (ID, commentaire, Note) VALUES(?, ?, ?)");
+      $insererCommentaire->execute(array($userID, $commentaire, $Note));
 
-      }else{
-         echo "Vous devez remplir tous les champs...";
-      }
+      echo "Commentaire et note ajoutés avec succès!";
+   } else {
+      echo "Vous devez remplir tous les champs...";
    }
+}
 ?>
 
 
@@ -76,7 +76,6 @@
 
       <form action="" method="post" class="book-form">
 
-
          <section class="home">
             <div class="swiper home-slider">
                <div class="swiper-wrapper">
@@ -127,22 +126,13 @@
             <i class="fas fa-map-marker-alt fa-2x" ></i> <b>1 Rue Panhard et Levassor, 78570 Chanteloup-les-Vignes</b><br><br>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10502.67429596528!2d2.3410725774154697!3d48.845460162466715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671ef6ff7f46f%3A0x50b82c368941a90!2s5th%20arrondissement%2C%2075005%20Paris!5e0!3m2!1sen!2sfr!4v1712366221533!5m2!1sen!2sfr" width="500" height="400" style="border: 0; border-radius: 8%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
          </div>
-         <div class="inputBox">
-            <br><span>Nom :</span>
-            <input type="text" placeholder="entrez votre nom" name="pseudo" required>
-         
-         
-            <br><span>Email :</span>
-            <input type="email" placeholder="entrez votre email" name="Email" required>
-         
-         
-         
+         <div class="inputBox">    
             <br><span>Note :</span>
             <input type="number" min="0" max="5" placeholder="Note 0-5" name="Note" required>
          
          
-            <br><span>Message :</span>
-            <input type="text" placeholder="Message" name="message" required>
+            <br><span>Commentaire :</span>
+            <input type="text" placeholder="commentaire" name="commentaire" required>
             
          </div>
          <input type="submit" value="Valider" class="btn" name="valider">
