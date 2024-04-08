@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-// Assurez-vous que l'utilisateur est connecté et que son ID est stocké dans $_SESSION['userID']
-// Ce script suppose que l'ID de l'utilisateur est déjà dans la session. Sinon, vous devez ajouter cette logique.
-
 // Connexion à la base de données
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=login_register_db;charset=utf8', 'root', '');
@@ -13,20 +10,27 @@ try {
 }
 
 if(isset($_POST['valider'])) {
-    if(!empty($_POST['commentaire']) AND isset($_POST['Note']) AND isset($_SESSION['user_id'])) {  
+    if(!empty($_POST['commentaire']) AND isset($_POST['Note']) AND isset($_SESSION['user_id']) AND isset($_GET['activite_id'])) {  
+        $activite_id = $_GET['activite_id']; // Récupérer activite_id de l'URL
+        $user_id = $_SESSION['user_id']; // Récupérer l'ID de l'utilisateur connecté depuis la session
         $commentaire = nl2br(htmlspecialchars($_POST['commentaire']));
         $Note = htmlspecialchars($_POST['Note']);
-        $user_id = $_SESSION['user_id']; // Récupérer l'ID de l'utilisateur connecté depuis la session
 
-        // Préparation de la requête d'insertion
-        $insererCommentaire = $bdd->prepare("INSERT INTO evaluation (user_id, Commentaire, Note) VALUES(?, ?, ?)");
+        // Vérification de l'existence de l'activite_id
+        $verifActivite = $bdd->prepare("SELECT * FROM avis_activites WHERE activite_id = ?");
+        $verifActivite->execute([$activite_id]);
         
-        // Exécution de la requête
-        $insererCommentaire->execute(array($user_id, $commentaire, $Note));
+        if($verifActivite->rowCount() > 0) {
+            // L'activite_id existe, procéder à l'insertion
+            $insererCommentaire = $bdd->prepare("INSERT INTO evaluation (user_id, activite_id, Commentaire, Note) VALUES(?, ?, ?, ?)");
+            $insererCommentaire->execute([$user_id, $activite_id, $commentaire, $Note]);
 
-        echo "Commentaire et note ajoutés avec succès!";
+            echo "Commentaire et note ajoutés avec succès!";
+        } else {
+            echo "L'activité spécifiée n'existe pas.";
+        }
     } else {
-        echo "Vous devez remplir tous les champs...";
+        echo "Vous devez remplir tous les champs et être connecté.";
     }
 }
 ?>
@@ -116,7 +120,7 @@ if(isset($_POST['valider'])) {
 
          <div class="flex">
             <div>
-               <br><h2>Activity description :</h2>
+               <br><h2>Activity description : <section id="messages"></section></h2> 
                <p>Climb aboard a Police Academy car and enjoy a drifting lesson from the best in this spectacular discipline! 
                 <br>Drifting is an activity that allows you to approach corners quickly, while controlling the car's glide through 
                 <br>the curve. The show is guaranteed, and so is the smell of burning rubber!
@@ -153,7 +157,7 @@ if(isset($_POST['valider'])) {
       </form>
    </section>
    <button type="button" class="scroll-top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-   <section id="messages"></section>
+   
 
    <script>
       setInterval('load_message()',500);

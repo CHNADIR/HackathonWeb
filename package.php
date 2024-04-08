@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+// Assurez-vous que l'utilisateur est connecté et que son ID est stocké dans $_SESSION['userID']
+// Ce script suppose que l'ID de l'utilisateur est déjà dans la session. Sinon, vous devez ajouter cette logique.
+
+// Connexion à la base de données
+try {
+    $bdd = new PDO('mysql:host=localhost;dbname=login_register_db;charset=utf8', 'root', '');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(Exception $e) {
+    die('Erreur : '.$e->getMessage());
+}
+
+if(isset($_GET['activite_id'])) {
+   $activite_id = $_GET['activite_id']; // Récupérer activite_id de l'URL
+   $_SESSION['activite_id'] = $activite_id; // Stocker activite_id dans la session
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +85,7 @@
             <img src="images/croi3.jpeg" alt="">
          </div>
          <div class="content">
-            <div id="btn"><a href="act1.php" class="btn">Afficher plus</a></div>
+            <div id="btn"><a href="act1.php?activite_id=1" class="btn">Afficher plus</a></div>
             <div id="details">
                <h3>River cruise on the Seine </h3>
                <p>Paris 5th district (75)</p>
@@ -77,7 +99,7 @@
             <img src="images/bm1.webp" alt="">
          </div>
          <div class="content">
-            <div id="btn"><a href="act2.php" class="btn">Afficher plus</a></div>
+            <div id="btn"><a href="act2.php?activite_id=2" class="btn">Afficher plus</a></div>
             <div id="details">
                <h3>Bmw car driving</h3>
                <p>Passenger Drift baptism in a BMW M3 on the Le Mans circuit!</p>

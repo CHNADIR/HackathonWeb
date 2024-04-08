@@ -25,12 +25,14 @@ if (isset($_POST['login'])) {
             $name = $row['name'];
             $username = $row['username'];
             $password = $row['password'];
+            
 
 
             if ($username == $username && $password == $password) {
                 $_SESSION['name'] = $name;
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
+                $_SESSION['user_id']=$row['user_id'];
                 header('location:welcome.php');
             }
         } else {
@@ -40,3 +42,4 @@ if (isset($_POST['login'])) {
     }
 
 }
+?>
