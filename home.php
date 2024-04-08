@@ -32,6 +32,7 @@
          <a href="about.php">À Propos</a>
          <a href="package.php">Les activités</a>
          <a href="book.php">Reservation</a>
+         <a href="logout.php">Déconnexion</a>
       </nav>
       <div id="menu-btn" class="fas fa-bars"></div>
       <a href="home.php" class="logo"><img src="images/logo-SNR.png" height="80px" width="110px"></a>

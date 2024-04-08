@@ -1,24 +1,36 @@
-<?php 
+<?php
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=login_register_db;charset=utf8', 'root', '');
+// Assurez-vous que l'utilisateur est connecté et que son ID est stocké dans $_SESSION['userID']
+// Ce script suppose que l'ID de l'utilisateur est déjà dans la session. Sinon, vous devez ajouter cette logique.
 
-if(isset($_POST['valider'])){
-   if(!empty($_POST['commentaire']) AND isset($_POST['Note']) AND isset($_SESSION['userID'])) {  
-      $commentaire = nl2br(htmlspecialchars($_POST['commentaire']));
-      $Note = htmlspecialchars($_POST['Note']);
-      $userID = $_SESSION['userID']; // Assumed that user's ID is stored in the session when they logged in
+// Connexion à la base de données
+try {
+    $bdd = new PDO('mysql:host=localhost;dbname=login_register_db;charset=utf8', 'root', '');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(Exception $e) {
+    die('Erreur : '.$e->getMessage());
+}
 
-      // The insertion query now includes the user's ID
-      $insererCommentaire = $bdd->prepare("INSERT INTO evaluation (ID, commentaire, Note) VALUES(?, ?, ?)");
-      $insererCommentaire->execute(array($userID, $commentaire, $Note));
+if(isset($_POST['valider'])) {
+    if(!empty($_POST['commentaire']) AND isset($_POST['Note']) AND isset($_SESSION['user_id'])) {  
+        $commentaire = nl2br(htmlspecialchars($_POST['commentaire']));
+        $Note = htmlspecialchars($_POST['Note']);
+        $user_id = $_SESSION['user_id']; // Récupérer l'ID de l'utilisateur connecté depuis la session
 
-      echo "Commentaire et note ajoutés avec succès!";
-   } else {
-      echo "Vous devez remplir tous les champs...";
-   }
+        // Préparation de la requête d'insertion
+        $insererCommentaire = $bdd->prepare("INSERT INTO evaluation (user_id, Commentaire, Note) VALUES(?, ?, ?)");
+        
+        // Exécution de la requête
+        $insererCommentaire->execute(array($user_id, $commentaire, $Note));
+
+        echo "Commentaire et note ajoutés avec succès!";
+    } else {
+        echo "Vous devez remplir tous les champs...";
+    }
 }
 ?>
+
 
 
 <!DOCTYPE html>
@@ -63,6 +75,7 @@ if(isset($_POST['valider'])){
          <a href="about.php">À Propos</a>
          <a href="package.php">Les activités</a>
          <a href="book.php">Reservation</a>
+         <a href="logout.php">Déconnexion</a>
       </nav>
       
 

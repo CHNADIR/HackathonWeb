@@ -1,23 +1,34 @@
-<?php session_start(); ?>
-
 <?php
-   $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8', 'root','');
-   if(isset($_POST['valider'])){
-      if(!empty($_POST['pseudo']) AND !empty($_POST['message']) AND isset($_POST['Email']) AND !empty($_POST['Email']) AND isset($_POST['Note'])) {  
-         $pseudo = htmlspecialchars($_POST['pseudo']);
-         $message = nl2br(htmlspecialchars($_POST['message']));
-         $Email = htmlspecialchars($_POST['Email']);
-         $Note = htmlspecialchars($_POST['Note']);
+session_start();
 
+// Assurez-vous que l'utilisateur est connecté et que son ID est stocké dans $_SESSION['userID']
+// Ce script suppose que l'ID de l'utilisateur est déjà dans la session. Sinon, vous devez ajouter cette logique.
 
-         $insererMessage = $bdd->prepare("INSERT INTO messages(pseudo, message, Email, Note) VALUES(?, ?, ?, ?)");
-         $insererMessage->execute(array($pseudo,$message, $Email, $Note));
-         
+// Connexion à la base de données
+try {
+    $bdd = new PDO('mysql:host=localhost;dbname=login_register_db;charset=utf8', 'root', '');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(Exception $e) {
+    die('Erreur : '.$e->getMessage());
+}
 
-      }else{
-         echo "Vous devez remplir tous les champs...";
-      }
-   }
+if(isset($_POST['valider'])) {
+    if(!empty($_POST['commentaire']) AND isset($_POST['Note']) AND isset($_SESSION['user_id'])) {  
+        $commentaire = nl2br(htmlspecialchars($_POST['commentaire']));
+        $Note = htmlspecialchars($_POST['Note']);
+        $user_id = $_SESSION['user_id']; // Récupérer l'ID de l'utilisateur connecté depuis la session
+
+        // Préparation de la requête d'insertion
+        $insererCommentaire = $bdd->prepare("INSERT INTO evaluation (user_id, Commentaire, Note) VALUES(?, ?, ?)");
+        
+        // Exécution de la requête
+        $insererCommentaire->execute(array($user_id, $commentaire, $Note));
+
+        echo "Commentaire et note ajoutés avec succès!";
+    } else {
+        echo "Vous devez remplir tous les champs...";
+    }
+}
 ?>
 
 
@@ -63,6 +74,7 @@
          <a href="about.php">À Propos</a>
          <a href="package.php">Les activités</a>
          <a href="book.php">Reservation</a>
+         <a href="logout.php">Déconnexion</a>
       </nav>
       
 
@@ -119,21 +131,12 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10502.67429596528!2d2.3410725774154697!3d48.845460162466715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671ef6ff7f46f%3A0x50b82c368941a90!2s5th%20arrondissement%2C%2075005%20Paris!5e0!3m2!1sen!2sfr!4v1712366221533!5m2!1sen!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
          </div>
          <div class="inputBox">
-            <br><span>Nom :</span>
-            <input type="text" placeholder="entrez votre nom" name="pseudo" required>
-         
-         
-            <br><span>Email :</span>
-            <input type="email" placeholder="entrez votre email" name="Email" required>
-         
-         
-         
             <br><span>Note :</span>
             <input type="number" min="0" max="5" placeholder="Note 0-5" name="Note" required>
          
          
-            <br><span>Message :</span>
-            <input type="text" placeholder="Message" name="message" required>
+            <br><span>Commentaire :</span>
+            <input type="text" placeholder="commentaire" name="commentaire" required>
          </div>
          <input type="submit" value="Valider" class="btn" name="valider">
          </div>
