@@ -35,16 +35,26 @@ CREATE TABLE `tbl_user` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation`
+-- Table structure for table `avis_activités`
 --
 
+CREATE TABLE `avis_activites` (
+  `activite_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nom_activite` VARCHAR(255) NOT NULL,
+  `lien_activite` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`activite_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Ensuite, création de la table `evaluation` qui référence `avis_activites`
 CREATE TABLE `evaluation` (
   `evaluation_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
+  `activite_id` INT(11) NOT NULL,
   `Note` int NOT NULL,
   `Commentaire` text NOT NULL,
   PRIMARY KEY (`evaluation_id`),
-  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_activite_id` FOREIGN KEY (`activite_id`) REFERENCES `avis_activites`(`activite_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

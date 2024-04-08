@@ -45,7 +45,7 @@ $_SESSION['username'];
         margin: 20px;
     }.container .btn{
         margin-top: -30px;
-        width: 150px;
+        width: 180px;
         background-color: #fd5e42;
         color: white;
         font-weight: 500;
@@ -54,10 +54,11 @@ $_SESSION['username'];
         border-radius: 20px;
     }.container .btn:hover{
         margin-top: -30px;
-        width:200px;
+        width: 250px;
         background-color: darkorange;
         font-weight: 500;
         transition: 1s;
+        transition-duration: 1s;
         color: white;
     }
 </style>
@@ -70,8 +71,9 @@ $_SESSION['username'];
 
 <div class="container">
 <h3>Welcome,  <span><?=$_SESSION['name'];?></span></h3>
-<p>Your Email id is : <h6><?=$_SESSION['username'];?></h6></p>
-<a href="home.php" class="btn">Accueil</a>
+<p>Your Email is : <h6><?=$_SESSION['username'];?></h6><br>Your User ID is : <span><?=$_SESSION['user_id'];?></span></p>
+<a href="home.php" class="btn">Accueil</a><br><br>
+<a href="logout.php" class="btn">Déconnexion</a>
 </div>
 
 
