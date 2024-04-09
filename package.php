@@ -16,6 +16,9 @@ if(isset($_GET['activite_id'])) {
    $activite_id = $_GET['activite_id']; // Récupérer activite_id de l'URL
    $_SESSION['activite_id'] = $activite_id; // Stocker activite_id dans la session
 }
+
+$_SESSION['name'];
+$_SESSION['username'];
 ?>
 
 
@@ -66,7 +69,7 @@ if(isset($_GET['activite_id'])) {
    <div id="menu-btn" class="fas fa-bars"></div>
 
    <a href="home.php" class="logo"><img src="images/logo-SNR.png" height="80px" width="110px"></a>
-
+   <a href="welcome.php" ><i class="fa fa-user" aria-hidden="true" id="navlogo" style="font-size : 20px"><?=$_SESSION['name'];?></i></a>
 </section>
 
 <!-- header section ends -->

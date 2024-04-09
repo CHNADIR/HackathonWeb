@@ -21,41 +21,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
---
-
+-- Création de la table tbl_user
 CREATE TABLE `tbl_user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `user_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `username` VARCHAR(255) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `avis_activités`
---
-
-CREATE TABLE `avis_activites` (
+-- Création de la table activites
+CREATE TABLE `activites` (
   `activite_id` INT(11) NOT NULL AUTO_INCREMENT,
   `nom_activite` VARCHAR(255) NOT NULL,
   `lien_activite` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`activite_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Ensuite, création de la table `evaluation` qui référence `avis_activites`
-CREATE TABLE `evaluation` (
-  `evaluation_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `activite_id` INT(11) NOT NULL,
-  `Note` int NOT NULL,
-  `Commentaire` text NOT NULL,
-  PRIMARY KEY (`evaluation_id`),
-  CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_activite_id` FOREIGN KEY (`activite_id`) REFERENCES `avis_activites`(`activite_id`) ON DELETE CASCADE ON UPDATE CASCADE
+-- Création de la table commentaires
+CREATE TABLE `reviews` (
+  `id_review` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_user` INT(11) NOT NULL,
+  `Commentaire` VARCHAR(255) NOT NULL,
+  `note` INT(11) NOT NULL,
+  `nom_activite` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id_review`),
+  CONSTRAINT `fk_reviews_id_user` FOREIGN KEY (`id_user`) REFERENCES `tbl_user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

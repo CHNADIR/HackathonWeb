@@ -1,3 +1,14 @@
+<?php
+session_start();
+include_once('connection.php');
+
+// if(isset($_SESSION['name']) && isset($_SESSION['username'] )){
+
+// }
+$_SESSION['name'];
+$_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +47,7 @@
       </nav>
       <div id="menu-btn" class="fas fa-bars"></div>
       <a href="home.php" class="logo"><img src="images/logo-SNR.png" height="80px" width="110px"></a>
+      <a href="welcome.php" ><i class="fa fa-user" aria-hidden="true" id="navlogo" style="font-size : 20px"><?=$_SESSION['name'];?></i></a>
    </section>
    <!-- header section ends -->
    <!-- home section starts  -->

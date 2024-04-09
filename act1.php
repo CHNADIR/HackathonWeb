@@ -9,26 +9,25 @@ try {
     die('Erreur : '.$e->getMessage());
 }
 
+$_SESSION['activite'] = "River cruise on the Seine";
+
+
 if(isset($_POST['valider'])) {
-    if(!empty($_POST['commentaire']) AND isset($_POST['Note']) AND isset($_SESSION['user_id']) AND isset($_GET['activite_id'])) {  
-        $activite_id = $_GET['activite_id']; // Récupérer activite_id de l'URL
+    if(!empty($_POST['Commentaire']) AND isset($_POST['Note']) AND isset($_SESSION['user_id']) AND isset($_GET['activite_id'])) {  
+        //$activite_id = $_GET['activite_id']; // Récupérer activite_id de l'URL
         $user_id = $_SESSION['user_id']; // Récupérer l'ID de l'utilisateur connecté depuis la session
-        $commentaire = nl2br(htmlspecialchars($_POST['commentaire']));
-        $Note = htmlspecialchars($_POST['Note']);
+        $commentaire = nl2br(htmlspecialchars($_POST['Commentaire']));
+        $note = htmlspecialchars($_POST['Note']);
+        $activityName = $_SESSION['activite'];
 
         // Vérification de l'existence de l'activite_id
-        $verifActivite = $bdd->prepare("SELECT * FROM avis_activites WHERE activite_id = ?");
-        $verifActivite->execute([$activite_id]);
         
-        if($verifActivite->rowCount() > 0) {
-            // L'activite_id existe, procéder à l'insertion
-            $insererCommentaire = $bdd->prepare("INSERT INTO evaluation (user_id, activite_id, Commentaire, Note) VALUES(?, ?, ?, ?)");
-            $insererCommentaire->execute([$user_id, $activite_id, $commentaire, $Note]);
+            // L'activite_id existe, procéder à l'insertion du commentaire
+            $insererCommentaire = $bdd->prepare("INSERT INTO reviews (id_user, nom_activite, commentaire, note) VALUES(?, ?, ?,?)");
+            $insererCommentaire->execute([$user_id, $activityName, $commentaire, $note]);
 
             echo "Commentaire et note ajoutés avec succès!";
-        } else {
-            echo "L'activité spécifiée n'existe pas.";
-        }
+        
     } else {
         echo "Vous devez remplir tous les champs et être connecté.";
     }
@@ -85,6 +84,7 @@ if(isset($_POST['valider'])) {
 
       <div id="menu-btn" class="fas fa-bars"></div>
       <a href="home.php" class="logo"><img src="images/logo-SNR.png" height="80px" width="110px"></a>
+      <a href="welcome.php" ><i class="fa fa-user" aria-hidden="true" id="navlogo" style="font-size : 20px"><?=$_SESSION['name'];?></i></a>
 
    </section>
 
@@ -141,13 +141,12 @@ if(isset($_POST['valider'])) {
          
          
             <br><span>Commentaire :</span>
-            <input type="text" placeholder="commentaire" name="commentaire" required>
+            <input type="text" placeholder="Commentaire" name="Commentaire" required>
          <input type="submit" value="Valider" class="btn" name="valider">
 
       </form>
    </section>
    <button type="button" class="scroll-top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
-   
 
    <script>
       setInterval('load_message()',500);
