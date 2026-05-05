@@ -125,24 +125,22 @@
 
             <label class="search-box">
               <span aria-hidden="true">?</span>
-              <input id="searchInput" type="search" placeholder="Rechercher salle, service ou besoin..." autocomplete="off">
+              <input id="searchInput" type="search" placeholder="Rechercher une salle (ex. A347)" autocomplete="off">
             </label>
 
-            <div class="quick-filters" aria-label="Filtres d'accessibilite">
-              <button class="filter-chip is-active" type="button" data-filter="accessible">Accessible</button>
-              <button class="filter-chip is-active" type="button" data-filter="rampe">Rampes</button>
-              <button class="filter-chip" type="button" data-filter="ascenseur">Ascenseurs</button>
-              <button class="filter-chip is-active" type="button" data-filter="toilettes">Toilettes PMR</button>
-              <button class="filter-chip" type="button" data-filter="signalement">Signalements</button>
-            </div>
-
             <div class="level-tabs" aria-label="Niveaux du plan Paris 8">
-              <button class="level-chip is-active" type="button" data-level="all">Tous</button>
               <button class="level-chip" type="button" data-level="Niveau 0">Niveau 0</button>
               <button class="level-chip" type="button" data-level="Niveau 1">Niveau 1</button>
               <button class="level-chip" type="button" data-level="Niveau 2">Niveau 2</button>
               <button class="level-chip" type="button" data-level="Niveau 3">Niveau 3</button>
               <button class="level-chip" type="button" data-level="Niveau 4">Niveau 4</button>
+              <button class="level-chip is-active" type="button" data-level="all">Tous</button>
+            </div>
+
+            <div class="quick-filters quick-filters--compact" aria-label="Filtres d'accessibilite">
+              <button class="filter-chip is-active" type="button" data-filter="accessible">Accessible</button>
+              <button class="filter-chip is-active" type="button" data-filter="ascenseur">Ascenseur</button>
+              <button class="filter-chip is-active" type="button" data-filter="toilettes">PMR</button>
             </div>
 
             <article class="map-card">
@@ -159,55 +157,68 @@
               <p class="map-source">Source: plan officiel Universite Paris 8, niveaux 0 a 4.</p>
             </article>
 
+            <button class="primary-button" type="button" data-go-to="route">Tracer un itineraire accessible</button>
+
             <div class="results-panel">
               <div class="place-list" id="placeList" aria-live="polite"></div>
             </div>
 
             <nav class="bottom-nav" aria-label="Navigation principale">
+              <button class="nav-item" type="button" data-screen="home"><span>HOME</span>Accueil</button>
               <button class="nav-item is-active" type="button" data-screen="map"><span>MAP</span>Carte</button>
-              <button class="nav-item" type="button" data-screen="route"><span>GO</span>Itineraire</button>
-              <button class="nav-item" type="button" data-screen="reports"><span>SOS</span>Signaler</button>
-              <button class="nav-item" type="button" data-screen="settings"><span>CFG</span>Profil</button>
+              <button class="nav-item" type="button" data-screen="route"><span>PATH</span>Itineraire</button>
+              <button class="nav-item" type="button" data-screen="settings"><span>PMR</span>Profil</button>
             </nav>
           </section>
 
-          <section class="screen" data-screen="route" aria-labelledby="route-title">
-            <div class="top-row">
-              <button class="back-button" type="button" data-go-to="map" aria-label="Retour">&lt;</button>
-              <p class="step">Itineraire accessible</p>
+          <section class="screen screen--campus" data-screen="route" aria-labelledby="route-title">
+            <p class="step">Campus</p>
+            <h2 class="screen-title" id="route-title">Carte du campus</h2>
+
+            <div class="search-row">
+              <label class="search-box">
+                <span aria-hidden="true">?</span>
+                <input type="search" placeholder="Rechercher un batiment...">
+              </label>
+              <button class="icon-button filter-round" type="button" data-go-to="settings" aria-label="Filtres">CFG</button>
             </div>
 
-            <h2 class="screen-title" id="route-title">Aller de A vers B</h2>
+            <div class="quick-filters campus-filter-row" aria-label="Filtres rapides">
+              <button class="filter-chip is-active" type="button" data-filter="accessible">Accessible</button>
+              <button class="filter-chip" type="button" data-screen="reports">Signalement</button>
+            </div>
 
-            <form class="route-form">
-              <label class="select-box">
-                <span>Depart</span>
-                <select id="startSelect">
-                  <option>Entree principale</option>
-                  <option>Station metro Saint-Denis Universite</option>
-                  <option>Accueil handicap</option>
-                </select>
-              </label>
+            <div class="campus-visual" aria-label="Carte visuelle du campus">
+              <span class="campus-road campus-road--one"></span>
+              <span class="campus-road campus-road--two"></span>
+              <span class="campus-building"></span>
+              <button class="campus-bubble campus-bubble--a" type="button" data-go-to="map">A</button>
+              <button class="campus-bubble campus-bubble--b" type="button" data-go-to="map">B</button>
+              <button class="campus-bubble campus-bubble--sos" type="button" data-go-to="reports">SOS</button>
+              <span class="campus-sos-label">Alerter la securite</span>
+
+              <article class="place-card selected-place">
+                <span class="place-icon">PIN</span>
+                <span>
+                  <strong id="selectedPlaceName"></strong>
+                  <small id="selectedPlaceMeta"></small>
+                </span>
+                <p id="selectedPlaceDescription"></p>
+                <div class="feature-tags" id="selectedPlaceFeatures"></div>
+                <em id="selectedPlaceStatus"></em>
+              </article>
+            </div>
+
+            <form class="route-form route-form--hidden">
               <label class="select-box">
                 <span>Destination</span>
                 <select id="destinationSelect"></select>
               </label>
             </form>
 
-            <article class="place-card selected-place">
-              <span class="place-icon">PIN</span>
-              <span>
-                <strong id="selectedPlaceName"></strong>
-                <small id="selectedPlaceMeta"></small>
-              </span>
-              <p id="selectedPlaceDescription"></p>
-              <div class="feature-tags" id="selectedPlaceFeatures"></div>
-              <em id="selectedPlaceStatus"></em>
-            </article>
+            <button class="primary-button" type="button" id="startRouteButton">Itineraire accessible</button>
 
-            <button class="primary-button" type="button" id="startRouteButton">Tracer un itineraire accessible</button>
-
-            <article class="route-summary">
+            <article class="route-summary route-summary--compact">
               <h3 id="routeTitle">Trajet recommande</h3>
               <p id="routeMeta"></p>
               <p>Evite: <strong id="routeAvoids"></strong></p>
@@ -215,10 +226,10 @@
             </article>
 
             <nav class="bottom-nav" aria-label="Navigation principale">
-              <button class="nav-item" type="button" data-screen="map"><span>MAP</span>Carte</button>
-              <button class="nav-item is-active" type="button" data-screen="route"><span>GO</span>Itineraire</button>
-              <button class="nav-item" type="button" data-screen="reports"><span>SOS</span>Signaler</button>
-              <button class="nav-item" type="button" data-screen="settings"><span>CFG</span>Profil</button>
+              <button class="nav-item" type="button" data-screen="home"><span>HOME</span>Accueil</button>
+              <button class="nav-item is-active" type="button" data-screen="map"><span>MAP</span>Carte</button>
+              <button class="nav-item" type="button" data-screen="route"><span>PATH</span>Itineraire</button>
+              <button class="nav-item" type="button" data-screen="settings"><span>PMR</span>Profil</button>
             </nav>
           </section>
 

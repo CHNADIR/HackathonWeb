@@ -1,9 +1,9 @@
 const appState = {
   currentScreen: 'home',
   selectedProfiles: new Set(['mobilite']),
-  activeFilters: new Set(['accessible', 'rampe', 'toilettes']),
-  selectedPlaceId: 'entree-universite',
-  currentLevel: 'all',
+  activeFilters: new Set(['accessible', 'ascenseur', 'toilettes']),
+  selectedPlaceId: 'bu',
+  currentLevel: 'Niveau 0',
   offline: false,
   simpleMode: false,
   highContrast: false,
@@ -28,7 +28,7 @@ const places = [
   {
     id: 'bu',
     name: 'Bibliotheque universitaire',
-    building: 'Batiment BU',
+    building: 'Batiment A',
     distance: '120 m',
     level: 'Niveau 0',
     type: 'Bibliotheque',
@@ -408,7 +408,7 @@ function renderMapPins() {
 function renderSelectedPlace() {
   const place = places.find((item) => item.id === appState.selectedPlaceId) || places[0];
   $('#selectedPlaceName').textContent = place.name;
-  $('#selectedPlaceMeta').textContent = `${place.building} - ${place.level} - ${place.distance}`;
+  $('#selectedPlaceMeta').textContent = `${place.building} - ${place.distance}`;
   $('#selectedPlaceDescription').textContent = place.description;
   $('#selectedPlaceFeatures').innerHTML = [place.rooms, ...place.features].map((feature) => `<span>${feature}</span>`).join('');
   $('#selectedPlaceStatus').textContent = place.status;
