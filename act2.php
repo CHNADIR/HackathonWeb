@@ -78,6 +78,8 @@ if(isset($_POST['valider'])) {
          <a href="home.php" class="active">Accueil</a>
          <a href="about.php">À Propos</a>
          <a href="package.php">Les activités</a>
+         <a href="rentabilite.php">Rentabilité</a>
+         <a href="map.php">Map 3D</a>
          <a href="book.php">Reservation</a>
          <a href="logout.php">Déconnexion</a>
       </nav>
@@ -174,6 +176,8 @@ if(isset($_POST['valider'])) {
             <a href="home.php"> <i class="fas fa-angle-right"></i> Accueil</a>
             <a href="about.php"> <i class="fas fa-angle-right"></i>À Propos </a>
             <a href="package.php"> <i class="fas fa-angle-right"></i> Activités</a>
+            <a href="rentabilite.php"> <i class="fas fa-angle-right"></i> Rentabilité</a>
+            <a href="map.php"> <i class="fas fa-angle-right"></i> Map 3D Paris 8</a>
             <a href="book.php"> <i class="fas fa-angle-right"></i> Réservation</a>
          </div>
          <div class="box">

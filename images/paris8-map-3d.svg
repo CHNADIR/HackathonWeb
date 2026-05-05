@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Plan 3D de l'Universite Paris 8</title>
+  <desc id="desc">Carte stylisee des batiments de l'Universite Paris 8 Vincennes-Saint-Denis.</desc>
+  <defs>
+    <linearGradient id="ground" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f4fbff"/>
+      <stop offset="100%" stop-color="#e4f0f5"/>
+    </linearGradient>
+    <linearGradient id="roofBlue" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#5bb3d4"/>
+      <stop offset="100%" stop-color="#247ba0"/>
+    </linearGradient>
+    <linearGradient id="roofOrange" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ff9c80"/>
+      <stop offset="100%" stop-color="#fd5e42"/>
+    </linearGradient>
+    <linearGradient id="roofGreen" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#7ed6a8"/>
+      <stop offset="100%" stop-color="#2c9f6b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="12" dy="18" stdDeviation="8" flood-color="#14313d" flood-opacity=".2"/>
+    </filter>
+    <style>
+      .label{font:700 22px Arial,sans-serif;fill:#15313f;text-anchor:middle}
+      .small{font:600 15px Arial,sans-serif;fill:#445;text-anchor:middle}
+      .road{fill:none;stroke:#ffffff;stroke-width:34;stroke-linecap:round;stroke-linejoin:round}
+      .road-edge{fill:none;stroke:#cbdde5;stroke-width:38;stroke-linecap:round;stroke-linejoin:round}
+      .path{fill:none;stroke:#247ba0;stroke-width:7;stroke-linecap:round;stroke-dasharray:14 12}
+      .wall{fill:#d7e5eb}
+      .side{fill:#b8ced8}
+      .front{fill:#edf5f8}
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="url(#ground)"/>
+  <ellipse cx="590" cy="420" rx="470" ry="255" fill="#dcebf1"/>
+  <path class="road-edge" d="M100 615 C250 555 285 475 430 485 C570 495 615 620 790 595 C925 575 1015 480 1110 405"/>
+  <path class="road" d="M100 615 C250 555 285 475 430 485 C570 495 615 620 790 595 C925 575 1015 480 1110 405"/>
+  <path class="path" d="M225 615 C325 530 405 445 515 405 C655 355 760 333 910 268"/>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(310 385)">
+      <polygon class="side" points="0,60 190,60 220,30 30,30"/>
+      <polygon class="wall" points="190,60 220,30 220,120 190,150"/>
+      <polygon class="front" points="0,60 190,60 190,150 0,150"/>
+      <polygon fill="url(#roofBlue)" points="0,60 30,30 220,30 190,60"/>
+      <text class="label" x="95" y="115">A</text>
+      <text class="small" x="95" y="137">Batiment A</text>
+    </g>
+
+    <g transform="translate(505 315)">
+      <polygon class="side" points="0,55 165,55 195,25 30,25"/>
+      <polygon class="wall" points="165,55 195,25 195,115 165,145"/>
+      <polygon class="front" points="0,55 165,55 165,145 0,145"/>
+      <polygon fill="url(#roofBlue)" points="0,55 30,25 195,25 165,55"/>
+      <text class="label" x="82" y="108">B1</text>
+      <text class="small" x="82" y="130">Batiment B1</text>
+    </g>
+
+    <g transform="translate(690 315)">
+      <polygon class="side" points="0,55 165,55 195,25 30,25"/>
+      <polygon class="wall" points="165,55 195,25 195,115 165,145"/>
+      <polygon class="front" points="0,55 165,55 165,145 0,145"/>
+      <polygon fill="url(#roofBlue)" points="0,55 30,25 195,25 165,55"/>
+      <text class="label" x="82" y="108">B2</text>
+      <text class="small" x="82" y="130">Batiment B2</text>
+    </g>
+
+    <g transform="translate(455 170)">
+      <polygon class="side" points="0,55 175,55 205,25 30,25"/>
+      <polygon class="wall" points="175,55 205,25 205,120 175,150"/>
+      <polygon class="front" points="0,55 175,55 175,150 0,150"/>
+      <polygon fill="url(#roofOrange)" points="0,55 30,25 205,25 175,55"/>
+      <text class="label" x="88" y="110">D</text>
+      <text class="small" x="88" y="132">Batiment D</text>
+    </g>
+
+    <g transform="translate(660 170)">
+      <polygon class="side" points="0,55 175,55 205,25 30,25"/>
+      <polygon class="wall" points="175,55 205,25 205,120 175,150"/>
+      <polygon class="front" points="0,55 175,55 175,150 0,150"/>
+      <polygon fill="url(#roofOrange)" points="0,55 30,25 205,25 175,55"/>
+      <text class="label" x="88" y="110">C</text>
+      <text class="small" x="88" y="132">Batiment C</text>
+    </g>
+
+    <g transform="translate(865 215)">
+      <polygon class="side" points="0,50 125,50 150,25 25,25"/>
+      <polygon class="wall" points="125,50 150,25 150,110 125,135"/>
+      <polygon class="front" points="0,50 125,50 125,135 0,135"/>
+      <polygon fill="url(#roofGreen)" points="0,50 25,25 150,25 125,50"/>
+      <text class="label" x="62" y="102">BU</text>
+      <text class="small" x="62" y="123">Bibliotheque</text>
+    </g>
+
+    <g transform="translate(210 235)">
+      <polygon class="side" points="0,50 125,50 150,25 25,25"/>
+      <polygon class="wall" points="125,50 150,25 150,108 125,133"/>
+      <polygon class="front" points="0,50 125,50 125,133 0,133"/>
+      <polygon fill="url(#roofGreen)" points="0,50 25,25 150,25 125,50"/>
+      <text class="label" x="62" y="102">MDE</text>
+      <text class="small" x="62" y="123">Vie etudiante</text>
+    </g>
+
+    <g transform="translate(180 455)">
+      <polygon class="side" points="0,45 130,45 155,20 25,20"/>
+      <polygon class="wall" points="130,45 155,20 155,100 130,125"/>
+      <polygon class="front" points="0,45 130,45 130,125 0,125"/>
+      <polygon fill="url(#roofOrange)" points="0,45 25,20 155,20 130,45"/>
+      <text class="label" x="65" y="95">G</text>
+      <text class="small" x="65" y="116">Accueil</text>
+    </g>
+
+    <g transform="translate(895 410)">
+      <polygon class="side" points="0,45 120,45 145,20 25,20"/>
+      <polygon class="wall" points="120,45 145,20 145,95 120,120"/>
+      <polygon class="front" points="0,45 120,45 120,120 0,120"/>
+      <polygon fill="url(#roofGreen)" points="0,45 25,20 145,20 120,45"/>
+      <text class="label" x="60" y="91">L</text>
+      <text class="small" x="60" y="111">Batiment L</text>
+    </g>
+
+    <g transform="translate(765 510)">
+      <polygon class="side" points="0,45 120,45 145,20 25,20"/>
+      <polygon class="wall" points="120,45 145,20 145,95 120,120"/>
+      <polygon class="front" points="0,45 120,45 120,120 0,120"/>
+      <polygon fill="url(#roofOrange)" points="0,45 25,20 145,20 120,45"/>
+      <text class="label" x="60" y="91">J</text>
+      <text class="small" x="60" y="111">Amphis</text>
+    </g>
+
+    <g transform="translate(515 520)">
+      <polygon class="side" points="0,42 140,42 165,17 25,17"/>
+      <polygon class="wall" points="140,42 165,17 165,88 140,113"/>
+      <polygon class="front" points="0,42 140,42 140,113 0,113"/>
+      <polygon fill="url(#roofGreen)" points="0,42 25,17 165,17 140,42"/>
+      <text class="label" x="70" y="85">CROUS</text>
+      <text class="small" x="70" y="104">Restauration</text>
+    </g>
+  </g>
+
+  <g>
+    <circle cx="200" cy="640" r="18" fill="#fd5e42"/>
+    <text x="200" y="695" class="label">Entree M13</text>
+    <text x="200" y="718" class="small">Saint-Denis Universite</text>
+  </g>
+  <g>
+    <rect x="45" y="35" width="360" height="92" rx="22" fill="#ffffff" opacity=".92"/>
+    <text x="225" y="75" class="label">Universite Paris 8</text>
+    <text x="225" y="102" class="small">Plan 3D simplifie du campus</text>
+  </g>
+</svg>
