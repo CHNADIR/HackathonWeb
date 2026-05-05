@@ -584,6 +584,59 @@ p {
   font-weight: 800;
 }
 
+.route-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr;
+  gap: 20px;
+}
+
+.route-form {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+}
+
+.route-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.route-form select {
+  min-height: 52px;
+  padding: 0 16px;
+  color: var(--ink);
+  background: var(--soft);
+  border: 1px solid transparent;
+  border-radius: 16px;
+  font-weight: 800;
+}
+
+.route-summary {
+  padding: 24px;
+}
+
+.route-summary h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.route-summary > p {
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.route-note {
+  margin-top: 18px;
+  padding: 16px;
+  color: #2f5d47;
+  background: #eaf8f1;
+  border-radius: 18px;
+  font-weight: 800;
+}
+
 @media (max-width: 900px) {
   .site-header,
   .section-title,
@@ -593,7 +646,8 @@ p {
   }
 
   .hero,
-  .map-layout {
+  .map-layout,
+  .route-layout {
     grid-template-columns: 1fr;
   }
 
