@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueAccess - Carte du campus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="phone" aria-labelledby="carte-title">
+      <div class="phone-notch" aria-hidden="true"></div>
+      <div class="status-bar" aria-hidden="true">
+        <span>9:41</span>
+        <span class="battery"></span>
+      </div>
+
+      <div class="screen screen-map">
+        <p class="kicker">Paris 8 - Vincennes-Saint-Denis</p>
+        <h1 id="carte-title">Plan du campus</h1>
+
+        <label class="search-box">
+          <span aria-hidden="true">?</span>
+          <input type="search" placeholder="Rechercher une salle (ex. A347)">
+        </label>
+
+        <div class="level-tabs" aria-label="Niveaux du campus">
+          <button class="is-active" type="button">Niveau 0</button>
+          <button type="button">Niveau 1</button>
+          <button type="button">Niveau 2</button>
+        </div>
+
+        <article class="plan-card">
+          <div class="plan-banner">PARIS 8 <span>S'orienter a Paris 8</span></div>
+          <div class="campus-plan" aria-hidden="true">
+            <span class="shape shape-one"></span>
+            <span class="shape shape-two"></span>
+            <span class="shape shape-three"></span>
+            <span class="shape shape-four"></span>
+            <button class="map-marker">A</button>
+          </div>
+          <div class="legend">
+            <span><i class="dot"></i>Accessible PMR</span>
+            <span><i class="dot dot-blue"></i>Ascenseur</span>
+            <span><i class="dot dot-green"></i>Ouvert</span>
+          </div>
+        </article>
+
+        <a class="primary-button route-button" href="carte.html">Tracer un itineraire accessible</a>
+
+        <nav class="bottom-nav" aria-label="Navigation principale">
+          <a href="index.html"><span>HOME</span>Accueil</a>
+          <a class="is-active" href="carte.html"><span>MAP</span>Carte</a>
+          <a href="carte.html"><span>PATH</span>Itineraire</a>
+          <a href="profil.html"><span>USER</span>Profil</a>
+        </nav>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

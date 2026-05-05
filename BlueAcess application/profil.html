@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueAccess - Profil d'accessibilite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="phone">
+      <div class="phone-notch" aria-hidden="true"></div>
+      <div class="status-bar" aria-hidden="true">
+        <span>9:41</span>
+        <span class="battery"></span>
+      </div>
+
+      <section class="screen profile-screen">
+        <div class="progress" aria-label="Etape 2 sur 3">
+          <span></span>
+          <span></span>
+          <span class="muted"></span>
+        </div>
+
+        <p class="step-label">Etape 2 / 3</p>
+        <h1>Quel est votre <span>profil d'accessibilite ?</span></h1>
+        <p class="lead">Selectionnez un ou plusieurs profils pour adapter les itineraires et l'interface.</p>
+
+        <form class="profile-list">
+          <label class="profile-card">
+            <span class="icon-badge">OE</span>
+            <span>
+              <strong>Deficience visuelle</strong>
+              <small>Malvoyance, cecite...</small>
+            </span>
+            <input type="checkbox" aria-label="Deficience visuelle">
+          </label>
+
+          <label class="profile-card">
+            <span class="icon-badge">SO</span>
+            <span>
+              <strong>Deficience auditive</strong>
+              <small>Malentendance, lecture...</small>
+            </span>
+            <input type="checkbox" aria-label="Deficience auditive">
+          </label>
+
+          <label class="profile-card">
+            <span class="icon-badge">CO</span>
+            <span>
+              <strong>Trouble cognitif</strong>
+              <small>Reperes simples, guidage clair...</small>
+            </span>
+            <input type="checkbox" aria-label="Trouble cognitif">
+          </label>
+
+          <label class="profile-card">
+            <span class="icon-badge">PM</span>
+            <span>
+              <strong>Mobilite reduite</strong>
+              <small>Rampes, ascenseurs, toilettes PMR...</small>
+            </span>
+            <input type="checkbox" aria-label="Mobilite reduite">
+          </label>
+        </form>
+
+        <footer class="profile-footer">
+          <a class="primary-button" href="carte.html">Continuer <span>-&gt;</span></a>
+          <p>Modifiable a tout moment dans votre profil.</p>
+        </footer>
+      </section>
+    </section>
+
+    <nav class="page-links" aria-label="Pages BlueAccess">
+      <a href="index.html">Accueil</a>
+      <a class="active" href="profil.html">Profil</a>
+      <a href="carte.html">Carte</a>
+    </nav>
+  </main>
+</body>
+</html>
