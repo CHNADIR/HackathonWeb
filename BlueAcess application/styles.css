@@ -621,6 +621,16 @@ textarea:focus {
   background: var(--blue);
 }
 
+.level-chip {
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.level-chip.is-active {
+  color: #fff;
+  background: var(--ink);
+}
+
 .map-card {
   padding: 9px;
   background: var(--surface);
@@ -707,6 +717,13 @@ textarea:focus {
   transform: translate(-50%, -50%);
 }
 
+.map-pin--wide {
+  width: auto;
+  min-width: 42px;
+  padding: 0 8px;
+  border-radius: 999px;
+}
+
 .map-pin.is-selected {
   background: var(--green);
   outline: 3px solid rgba(53, 168, 117, .22);
@@ -746,6 +763,14 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.map-source {
+  margin: 8px 6px 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .dot {

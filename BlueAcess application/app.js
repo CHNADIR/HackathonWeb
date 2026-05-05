@@ -2,7 +2,8 @@ const appState = {
   currentScreen: 'home',
   selectedProfiles: new Set(['mobilite']),
   activeFilters: new Set(['accessible', 'rampe', 'toilettes']),
-  selectedPlaceId: 'bibliotheque',
+  selectedPlaceId: 'entree-universite',
+  currentLevel: 'all',
   offline: false,
   simpleMode: false,
   highContrast: false,
@@ -10,74 +11,274 @@ const appState = {
 
 const places = [
   {
-    id: 'bibliotheque',
+    id: 'entree-universite',
+    name: 'Entree universite - Metro M13',
+    building: 'Acces principal',
+    distance: '0 m',
+    level: 'Niveau 0',
+    type: 'Acces campus',
+    rooms: 'Metro Saint-Denis Universite, bus 11, 154, 253, 255, 256, 268, 356, 361',
+    description: 'Point de depart principal depuis le metro M13 Saint-Denis Universite et les arrets de bus.',
+    features: ['Entree adaptee', 'Chemin large', 'Point de depart'],
+    tags: ['accessible', 'entree', 'accueil'],
+    status: 'Ouvert',
+    x: 12,
+    y: 82,
+  },
+  {
+    id: 'bu',
     name: 'Bibliotheque universitaire',
-    building: 'Batiment A',
+    building: 'Batiment BU',
     distance: '120 m',
     level: 'Niveau 0',
-    type: 'Service et etudes',
-    description: 'Grand espace de travail avec entree accessible, ascenseur et toilettes PMR.',
-    features: ['Ascenseur', 'Rampe', 'Toilettes PMR', 'Accueil accessible'],
-    tags: ['accessible', 'ascenseur', 'rampe', 'toilettes', 'accueil'],
+    type: 'Bibliotheque',
+    rooms: 'BU',
+    description: 'Bibliotheque universitaire indiquee sur le plan au niveau 0, proche des batiments A et B.',
+    features: ['Entree adaptee', 'Ascenseur', 'Toilettes PMR', 'Espace de travail'],
+    tags: ['accessible', 'ascenseur', 'toilettes', 'entree'],
     status: 'Ouvert',
-    x: 46,
+    x: 44,
     y: 43,
   },
   {
-    id: 'amphi-x',
-    name: 'Amphitheatre X',
-    building: 'Batiment B',
-    distance: '210 m',
-    level: 'Niveau 1',
-    type: 'Cours',
-    description: 'Acces conseille par l ascenseur central. Porte large cote galerie.',
-    features: ['Ascenseur', 'Entree adaptee', 'Places PMR'],
-    tags: ['accessible', 'ascenseur', 'entree'],
+    id: 'batiment-a',
+    name: 'Batiment A',
+    building: 'Batiment A',
+    distance: '150 m',
+    level: 'Niveau 0',
+    type: 'Salles et amphitheatres',
+    rooms: 'A001-A010, A013, A026-A037, A041-A053, A061-A090, A093, A094, Amphi 4',
+    description: 'Grand batiment de cours. Le plan indique les salles A001 a A094 au niveau 0 et les amphitheatres proches.',
+    features: ['Entree adaptee', 'Rampe', 'Ascenseur', 'Salles de cours'],
+    tags: ['accessible', 'rampe', 'ascenseur', 'entree'],
     status: 'Ouvert',
-    x: 69,
+    x: 55,
     y: 61,
   },
   {
-    id: 'scolarite',
-    name: 'Service scolarite',
-    building: 'Batiment C',
-    distance: '260 m',
-    level: 'Niveau 0',
-    type: 'Administration',
-    description: 'Accueil administratif avec comptoir accessible et file prioritaire.',
-    features: ['Accueil accessible', 'Rampe', 'Signaletique claire'],
-    tags: ['accessible', 'rampe', 'accueil'],
+    id: 'batiment-a-n1',
+    name: 'Batiment A - Niveau 1',
+    building: 'Batiment A',
+    distance: '170 m',
+    level: 'Niveau 1',
+    type: 'Salles de cours',
+    rooms: 'A100-A105, A111-A122, A126-A154, A160-A193, Amphi 1, Amphi 2, Amphi 3',
+    description: 'Niveau 1 du batiment A avec salles A100 a A193 et amphitheatres 1, 2 et 3.',
+    features: ['Ascenseur', 'Salles de cours', 'Amphitheatres'],
+    tags: ['accessible', 'ascenseur'],
     status: 'Ouvert',
-    x: 23,
-    y: 66,
+    x: 56,
+    y: 56,
   },
   {
-    id: 'toilettes-a',
-    name: 'Toilettes PMR',
+    id: 'batiment-b1',
+    name: 'Batiment B1',
+    building: 'Batiment B1',
+    distance: '190 m',
+    level: 'Niveau 0',
+    type: 'Salles et amphitheatre',
+    rooms: 'B001-B007, Amphi B1',
+    description: 'Batiment B1 du plan niveau 0 avec salles B001 a B007 et Amphi B1.',
+    features: ['Entree adaptee', 'Ascenseur', 'Amphi'],
+    tags: ['accessible', 'ascenseur', 'entree'],
+    status: 'Ouvert',
+    x: 63,
+    y: 73,
+  },
+  {
+    id: 'batiment-b2',
+    name: 'Batiment B2',
+    building: 'Batiment B2',
+    distance: '210 m',
+    level: 'Niveau 0',
+    type: 'Salles et amphitheatre',
+    rooms: 'B030-B039, Amphi B2',
+    description: 'Batiment B2 du plan niveau 0 avec salles B030 a B039 et Amphi B2.',
+    features: ['Entree adaptee', 'Ascenseur', 'Amphi'],
+    tags: ['accessible', 'ascenseur', 'entree'],
+    status: 'Ouvert',
+    x: 58,
+    y: 29,
+  },
+  {
+    id: 'batiment-c',
+    name: 'Batiment C',
+    building: 'Batiment C',
+    distance: '230 m',
+    level: 'Niveau 0',
+    type: 'Salles de cours',
+    rooms: 'C001-C007, C008-C012, C021-C031, Coupole',
+    description: 'Batiment C au niveau 0 avec salles C001 a C031 et la Coupole.',
+    features: ['Entree adaptee', 'Signaletique claire'],
+    tags: ['accessible', 'entree'],
+    status: 'Ouvert',
+    x: 76,
+    y: 42,
+  },
+  {
+    id: 'batiment-d',
+    name: 'Batiment D',
+    building: 'Batiment D',
+    distance: '260 m',
+    level: 'Niveau 0',
+    type: 'Salles et services',
+    rooms: 'D001, D006, D011',
+    description: 'Batiment D visible sur les niveaux 0 a 3, avec salles D001, D006 et D011 au niveau 0.',
+    features: ['Entree adaptee', 'Ascenseur'],
+    tags: ['accessible', 'ascenseur', 'entree'],
+    status: 'Ouvert',
+    x: 79,
+    y: 24,
+  },
+  {
+    id: 'batiment-g',
+    name: 'Batiment G',
+    building: 'Batiment G',
+    distance: '160 m',
+    level: 'Niveau 0',
+    type: 'Services et salles',
+    rooms: 'G014, G015',
+    description: 'Batiment G indique sur le plan niveau 0, proche des services et de la zone centrale.',
+    features: ['Accueil accessible', 'Rampe', 'Services'],
+    tags: ['accessible', 'rampe', 'accueil'],
+    status: 'Ouvert',
+    x: 32,
+    y: 58,
+  },
+  {
+    id: 'mde',
+    name: 'Maison de l etudiant',
+    building: 'Batiment MDE',
+    distance: '200 m',
+    level: 'Niveau 0',
+    type: 'Vie etudiante',
+    rooms: 'MDE, services vie etudiante',
+    description: 'Maison de l etudiant presente sur le plan, avec services de vie etudiante et accompagnement.',
+    features: ['Accueil accessible', 'Rampe', 'Service social'],
+    tags: ['accessible', 'rampe', 'accueil'],
+    status: 'Ouvert',
+    x: 44,
+    y: 76,
+  },
+  {
+    id: 'crous',
+    name: 'CROUS',
+    building: 'Batiment CROUS',
+    distance: '250 m',
+    level: 'Niveau 0',
+    type: 'Service etudiant',
+    rooms: 'CROUS',
+    description: 'Service social et restauration etudiante localises dans la zone CROUS du plan.',
+    features: ['Accueil accessible', 'Service social', 'Restauration'],
+    tags: ['accessible', 'accueil'],
+    status: 'Ouvert',
+    x: 72,
+    y: 76,
+  },
+  {
+    id: 'amphi-x-y',
+    name: 'Amphi X et Amphi Y',
+    building: 'Batiment J',
+    distance: '280 m',
+    level: 'Niveau 0',
+    type: 'Amphitheatres',
+    rooms: 'Amphi X, Amphi Y',
+    description: 'Amphis X et Y situes dans la zone du batiment J selon le plan niveau 0.',
+    features: ['Places PMR', 'Entree adaptee'],
+    tags: ['accessible', 'entree'],
+    status: 'Ouvert',
+    x: 86,
+    y: 63,
+  },
+  {
+    id: 'point-info',
+    name: 'Point accueil information',
+    building: 'Service etudiant',
+    distance: '110 m',
+    level: 'Niveau 0',
+    type: 'Accueil',
+    rooms: 'Point accueil information',
+    description: 'Point d information utile aux etudiants, reference dans la liste des services du plan.',
+    features: ['Accueil accessible', 'Information', 'Orientation'],
+    tags: ['accessible', 'accueil'],
+    status: 'Ouvert',
+    x: 21,
+    y: 49,
+  },
+  {
+    id: 'accueil-handicap',
+    name: 'Service accueil handicap',
+    building: 'Service etudiant',
+    distance: '140 m',
+    level: 'Niveau 0',
+    type: 'Accessibilite',
+    rooms: 'Accueil handicap',
+    description: 'Service d accueil handicap mentionne dans les services utiles aux etudiants du plan.',
+    features: ['Accueil accessible', 'Accompagnement', 'Information handicap'],
+    tags: ['accessible', 'accueil'],
+    status: 'Ouvert',
+    x: 28,
+    y: 45,
+  },
+  {
+    id: 'scolarite',
+    name: 'Service de la scolarite',
+    building: 'Batiment G',
+    distance: '190 m',
+    level: 'Niveau 1',
+    type: 'Administration',
+    rooms: 'G114, G115, G116, G116 bis, G117',
+    description: 'Service de la scolarite et inscriptions, indique sur le plan autour des salles G114 a G117.',
+    features: ['Accueil accessible', 'Ascenseur', 'File prioritaire'],
+    tags: ['accessible', 'ascenseur', 'accueil'],
+    status: 'Ouvert',
+    x: 34,
+    y: 53,
+  },
+  {
+    id: 'ufr-mitsic',
+    name: 'UFR MITSIC - Informatique',
     building: 'Batiment A',
-    distance: '95 m',
+    distance: '210 m',
+    level: 'Niveau 1',
+    type: 'Departement',
+    rooms: 'A150, A168, A170, A181, A183',
+    description: 'Secteur informatique et mathematiques reference dans la liste des secretariats pedagogiques.',
+    features: ['Ascenseur', 'Salles de cours', 'Secretariat'],
+    tags: ['accessible', 'ascenseur'],
+    status: 'Ouvert',
+    x: 59,
+    y: 50,
+  },
+  {
+    id: 'ufr-arts',
+    name: 'UFR Arts',
+    building: 'Batiment A',
+    distance: '240 m',
+    level: 'Niveau 0',
+    type: 'Departement',
+    rooms: 'A029, A030, A031, A065, A069, A079, A080',
+    description: 'UFR Arts et formations cinema, theatre, danse, musique et arts plastiques.',
+    features: ['Entree adaptee', 'Ascenseur', 'Secretariat'],
+    tags: ['accessible', 'ascenseur', 'entree'],
+    status: 'Ouvert',
+    x: 54,
+    y: 67,
+  },
+  {
+    id: 'toilettes-pmr-a',
+    name: 'Toilettes PMR - Batiment A',
+    building: 'Batiment A',
+    distance: '130 m',
     level: 'Niveau 0',
     type: 'Sanitaires',
-    description: 'Toilettes adaptees proches de la bibliotheque.',
+    rooms: 'Zone A niveau 0',
+    description: 'Point sanitaire accessible a prioriser dans les trajets vers la BU et le batiment A.',
     features: ['Toilettes PMR', 'Accessible fauteuil'],
     tags: ['accessible', 'toilettes'],
     status: 'Ouvert',
-    x: 57,
-    y: 36,
-  },
-  {
-    id: 'ascenseur-b',
-    name: 'Ascenseur central',
-    building: 'Batiment B',
-    distance: '180 m',
-    level: 'Niveau 0',
-    type: 'Equipement',
-    description: 'Ascenseur principal du batiment B. Un signalement indique une attente longue.',
-    features: ['Ascenseur', 'Alerte temps reel'],
-    tags: ['ascenseur', 'signalement'],
-    status: 'Attention',
-    x: 76,
-    y: 32,
+    x: 50,
+    y: 54,
   },
 ];
 
@@ -144,22 +345,24 @@ function renderPlaces(query = '') {
   const list = $('#placeList');
   const results = places.filter((place) => {
     const matchesSearch = !normalizedQuery
-      || `${place.name} ${place.building} ${place.type} ${place.features.join(' ')}`
+      || `${place.name} ${place.building} ${place.type} ${place.level} ${place.rooms} ${place.features.join(' ')}`
         .toLowerCase()
         .includes(normalizedQuery);
 
     const matchesFilters = appState.activeFilters.size === 0
       || [...appState.activeFilters].some((filter) => place.tags.includes(filter));
 
-    return matchesSearch && matchesFilters;
+    const matchesLevel = appState.currentLevel === 'all' || place.level === appState.currentLevel;
+
+    return matchesSearch && matchesFilters && matchesLevel;
   });
 
   list.innerHTML = results.map((place) => `
     <button class="place-row ${place.id === appState.selectedPlaceId ? 'is-selected' : ''}" data-place-id="${place.id}" type="button">
-      <span class="place-row__icon">${place.building.slice(-1)}</span>
+      <span class="place-row__icon">${getPlaceCode(place)}</span>
       <span>
         <strong>${place.name}</strong>
-        <small>${place.building} - ${place.distance} - ${place.features.slice(0, 3).join(' - ')}</small>
+        <small>${place.building} - ${place.level} - ${place.distance}</small>
       </span>
       <em>${place.status}</em>
     </button>
@@ -182,14 +385,16 @@ function renderMapPins() {
   const map = $('#campusMap');
   map.querySelectorAll('.map-pin').forEach((pin) => pin.remove());
 
-  places.forEach((place) => {
+  places
+    .filter((place) => appState.currentLevel === 'all' || place.level === appState.currentLevel)
+    .forEach((place) => {
     const pin = document.createElement('button');
     pin.type = 'button';
     pin.className = `map-pin ${place.id === appState.selectedPlaceId ? 'is-selected' : ''}`;
     pin.style.left = `${place.x}%`;
     pin.style.top = `${place.y}%`;
     pin.dataset.placeId = place.id;
-    pin.textContent = place.building.slice(-1);
+    pin.textContent = getPlaceCode(place);
     pin.setAttribute('aria-label', place.name);
     pin.addEventListener('click', () => {
       appState.selectedPlaceId = place.id;
@@ -203,12 +408,29 @@ function renderMapPins() {
 function renderSelectedPlace() {
   const place = places.find((item) => item.id === appState.selectedPlaceId) || places[0];
   $('#selectedPlaceName').textContent = place.name;
-  $('#selectedPlaceMeta').textContent = `${place.building} - ${place.distance}`;
+  $('#selectedPlaceMeta').textContent = `${place.building} - ${place.level} - ${place.distance}`;
   $('#selectedPlaceDescription').textContent = place.description;
-  $('#selectedPlaceFeatures').innerHTML = place.features.map((feature) => `<span>${feature}</span>`).join('');
+  $('#selectedPlaceFeatures').innerHTML = [place.rooms, ...place.features].map((feature) => `<span>${feature}</span>`).join('');
   $('#selectedPlaceStatus').textContent = place.status;
   $('#destinationSelect').value = place.id;
   renderMapPins();
+}
+
+function getPlaceCode(place) {
+  if (place.id === 'entree-universite') {
+    return 'M13';
+  }
+  if (place.building.includes('BU')) {
+    return 'BU';
+  }
+  if (place.building.includes('MDE')) {
+    return 'ME';
+  }
+  if (place.building.includes('CROUS')) {
+    return 'CR';
+  }
+  const match = place.building.match(/Batiment ([A-Z][0-9]?)/);
+  return match ? match[1] : 'i';
 }
 
 function renderProfileSummary() {
@@ -226,6 +448,9 @@ function renderProfileSummary() {
 function renderFilters() {
   $$('.filter-chip').forEach((button) => {
     button.classList.toggle('is-active', appState.activeFilters.has(button.dataset.filter));
+  });
+  $$('.level-chip').forEach((button) => {
+    button.classList.toggle('is-active', button.dataset.level === appState.currentLevel);
   });
 }
 
@@ -350,6 +575,15 @@ function bindEvents() {
         appState.activeFilters.add(filter);
       }
       renderFilters();
+      renderPlaces($('#searchInput').value);
+    });
+  });
+
+  $$('.level-chip').forEach((button) => {
+    button.addEventListener('click', () => {
+      appState.currentLevel = button.dataset.level;
+      renderFilters();
+      renderMapPins();
       renderPlaces($('#searchInput').value);
     });
   });
