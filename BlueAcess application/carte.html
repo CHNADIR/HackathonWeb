@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlueAccess - Plan du campus</title>
+  <title>Carte du campus - BlueAccess</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,10 +12,10 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
-      <span class="brand-logo">BA</span>
+      <span class="brand__mark">BA</span>
       <span><strong>BlueAccess</strong><small>Universite Paris 8</small></span>
     </a>
-    <nav class="top-nav" aria-label="Menu principal">
+    <nav class="site-nav" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a href="profil.html">Profil</a>
       <a class="is-active" href="carte.html">Carte</a>
@@ -24,66 +24,69 @@
   </header>
 
   <main class="page">
-    <section class="section-title">
-      <div>
-        <p class="eyebrow">Paris 8 - Vincennes-Saint-Denis</p>
-        <h1>Plan du campus</h1>
-        <p>Recherchez une salle, un batiment ou un service accessible. Les donnees sont inspirees du plan officiel de l'universite.</p>
-      </div>
+    <section class="page-heading">
+      <p class="eyebrow">Carte du campus</p>
+      <h1>Explorer Paris 8</h1>
+      <p>Recherchez un batiment, une salle, un service et les equipements accessibles.</p>
     </section>
 
-    <section class="map-layout">
-      <div class="map-panel">
-        <label class="search-box">
+    <section class="map-grid">
+      <aside class="card map-tools">
+        <label class="field">
           <span>Recherche</span>
-          <input type="search" placeholder="Rechercher une salle (ex. A347)">
+          <input type="search" placeholder="Salle A347, BU, accueil handicap...">
         </label>
 
         <div>
-          <p class="tool-title">Niveaux</p>
-          <div class="tabs">
+          <h2>Niveaux</h2>
+          <div class="chips">
             <button class="is-active" type="button">Niveau 0</button>
             <button type="button">Niveau 1</button>
             <button type="button">Niveau 2</button>
             <button type="button">Niveau 3</button>
-            <button type="button">Niveau 4</button>
           </div>
         </div>
 
         <div>
-          <p class="tool-title">Filtres</p>
-          <div class="tabs">
+          <h2>Filtres</h2>
+          <div class="chips">
             <button class="is-active" type="button">Accessible</button>
             <button type="button">Ascenseur</button>
             <button type="button">Toilettes PMR</button>
-            <button type="button">Signalements</button>
           </div>
         </div>
-      </div>
+      </aside>
 
-      <article class="map-panel">
-        <div class="campus-map" aria-label="Carte simplifiee du campus">
-          <span class="shape shape-a">A</span>
-          <span class="shape shape-b">B</span>
-          <span class="shape shape-c">C</span>
-          <button class="marker marker-b" type="button">BU</button>
-          <button class="marker marker-a" type="button">A</button>
-          <button class="marker marker-sos" type="button">SOS</button>
+      <article class="card campus-card">
+        <div class="campus-map" aria-label="Carte simplifiee">
+          <span class="campus-road campus-road--one"></span>
+          <span class="campus-road campus-road--two"></span>
+          <span class="building building--a">A</span>
+          <span class="building building--b">B</span>
+          <span class="building building--c">C</span>
+          <button class="marker marker--bu" type="button">BU</button>
+          <button class="marker marker--a" type="button">A</button>
+          <button class="marker marker--sos" type="button">SOS</button>
         </div>
       </article>
 
-      <aside class="place-panel">
-        <article class="place-card">
-          <span class="place-icon">PIN</span>
-          <div>
-            <p>Batiment BU - Niveau 0 - 120 m</p>
-            <h2>Bibliotheque universitaire</h2>
-            <span>Entree adaptee, ascenseur, rampe et toilettes PMR.</span>
-          </div>
-          <a class="primary-button" href="itineraire.html">Tracer un itineraire accessible</a>
-        </article>
+      <aside class="card place-card">
+        <p class="eyebrow">Lieu selectionne</p>
+        <h2>Bibliotheque universitaire</h2>
+        <p class="place-card__meta">Batiment BU - Niveau 0 - 120 m</p>
+        <p>Entree adaptee, ascenseur, rampe et toilettes PMR. Point central pour se reperer sur le campus.</p>
+        <div class="tag-list">
+          <span>Accessible PMR</span>
+          <span>Ascenseur</span>
+          <span>Toilettes PMR</span>
+        </div>
+        <a class="button button--primary" href="itineraire.html">Tracer un itineraire</a>
       </aside>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <p>BlueAccess - Guide web d'accessibilite pour Paris 8</p>
+  </footer>
 </body>
 </html>

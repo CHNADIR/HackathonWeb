@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlueAccess - Profil d'accessibilite</title>
+  <title>BlueAccess - Profil</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,10 +12,10 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
-      <span class="brand-logo">BA</span>
+      <span class="brand__logo">BA</span>
       <span><strong>BlueAccess</strong><small>Universite Paris 8</small></span>
     </a>
-    <nav class="top-nav" aria-label="Menu principal">
+    <nav class="site-nav" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a class="is-active" href="profil.html">Profil</a>
       <a href="carte.html">Carte</a>
@@ -24,48 +24,46 @@
   </header>
 
   <main class="page">
-    <section class="section-title">
-      <div>
-        <p class="eyebrow">Etape 2 / 3</p>
-        <h1>Quel est votre profil d'accessibilite ?</h1>
-        <p>Selectionnez un ou plusieurs profils pour adapter les itineraires, les contrastes, les instructions et les alertes.</p>
-      </div>
+    <section class="page-heading">
+      <p class="eyebrow">Profil d'accessibilite</p>
+      <h1>Adapter BlueAccess a vos besoins</h1>
+      <p>Selectionnez un ou plusieurs profils pour personnaliser les trajets, les informations et les alertes.</p>
     </section>
 
     <section class="profile-grid" aria-label="Choix du profil">
-      <label class="profile-option">
-        <input type="checkbox" name="profile" value="visuelle">
-        <span class="profile-icon">OE</span>
-        <strong>Deficience visuelle</strong>
-        <small>Guidage vocal, contrastes eleves, grands textes et reperes clairs.</small>
-      </label>
-
-      <label class="profile-option">
-        <input type="checkbox" name="profile" value="auditive">
-        <span class="profile-icon">SO</span>
-        <strong>Deficience auditive</strong>
-        <small>Alertes visuelles, messages explicites et informations sans dependance au son.</small>
-      </label>
-
-      <label class="profile-option">
-        <input type="checkbox" name="profile" value="cognitive">
-        <span class="profile-icon">CO</span>
-        <strong>Trouble cognitif</strong>
-        <small>Mode simple, phrases courtes, pictogrammes et etapes une par une.</small>
-      </label>
-
-      <label class="profile-option is-selected">
-        <input type="checkbox" name="profile" value="mobilite" checked>
-        <span class="profile-icon">PM</span>
-        <strong>Mobilite reduite</strong>
-        <small>Eviter les escaliers, privilegier rampes, ascenseurs et toilettes PMR.</small>
-      </label>
+      <article class="profile-card">
+        <span>PMR</span>
+        <h2>Mobilite reduite</h2>
+        <p>Eviter les escaliers, privilegier les rampes, ascenseurs, passages larges et toilettes PMR.</p>
+      </article>
+      <article class="profile-card">
+        <span>VUE</span>
+        <h2>Deficience visuelle</h2>
+        <p>Afficher des instructions claires, des textes lisibles, un contraste fort et des reperes simples.</p>
+      </article>
+      <article class="profile-card">
+        <span>SON</span>
+        <h2>Deficience auditive</h2>
+        <p>Remplacer les alertes sonores par des messages visibles, pictogrammes et notifications textuelles.</p>
+      </article>
+      <article class="profile-card">
+        <span>ABC</span>
+        <h2>Troubles cognitifs</h2>
+        <p>Simplifier les etapes, reduire les informations et afficher un guidage rassurant.</p>
+      </article>
     </section>
 
-    <section class="actions-bar">
-      <a class="secondary-button" href="index.html">Retour</a>
-      <a class="primary-button" href="carte.html">Continuer vers la carte</a>
+    <section class="cta-band">
+      <div>
+        <h2>Profil recommande</h2>
+        <p>Pour commencer, utilisez le profil mobilite reduite afin de calculer des trajets sans escaliers.</p>
+      </div>
+      <a class="button button--primary" href="carte.html">Continuer vers la carte</a>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <p>BlueAccess - Prototype web pour l'Universite Paris 8</p>
+  </footer>
 </body>
 </html>

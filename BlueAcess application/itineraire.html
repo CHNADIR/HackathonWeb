@@ -3,62 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlueAccess - Itineraire accessible</title>
+  <title>BlueAccess - Itineraire</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
-      <span class="brand-logo">BA</span>
+      <span class="brand__mark">BA</span>
       <span><strong>BlueAccess</strong><small>Universite Paris 8</small></span>
     </a>
-    <nav class="top-nav" aria-label="Menu principal">
+
+    <nav class="site-nav" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a href="profil.html">Profil</a>
       <a href="carte.html">Carte</a>
-      <a class="is-active" href="itineraire.html">Itineraire</a>
+      <a class="active" href="itineraire.html">Itineraire</a>
     </nav>
   </header>
 
-  <main class="page">
-    <section class="section-title">
-      <div>
-        <p class="eyebrow">Trajet accessible</p>
-        <h1>Itineraire vers la bibliotheque</h1>
-        <p>Un parcours simple, lisible et adapte pour rejoindre le batiment BU depuis l'entree principale.</p>
-      </div>
+  <main>
+    <section class="page-hero">
+      <p class="eyebrow">Itineraire accessible</p>
+      <h1>Preparer un trajet clair de A vers B.</h1>
+      <p>Exemple de trajet accessible entre l'entree principale et la bibliotheque universitaire.</p>
     </section>
 
-    <section class="route-layout">
-      <article class="route-panel">
+    <section class="route-grid">
+      <article class="content-card">
         <p class="eyebrow">Depart</p>
         <h2>Entree principale M13</h2>
         <p>Point de depart conseille depuis le metro Saint-Denis Universite.</p>
       </article>
 
-      <article class="route-panel">
+      <article class="content-card">
         <p class="eyebrow">Destination</p>
         <h2>Bibliotheque universitaire</h2>
-        <p>Batiment BU - Niveau 0 - 120 m. Ascenseur, rampe et toilettes PMR disponibles.</p>
+        <p>Batiment BU, niveau 0, a environ 120 metres.</p>
       </article>
     </section>
 
-    <section class="route-panel route-plan">
+    <section class="content-card">
       <h2>Etapes du trajet</h2>
-      <ol class="route-steps">
+      <ol class="steps-list">
         <li>Sortir par l'entree principale cote Metro M13.</li>
         <li>Suivre l'allee large vers le batiment A.</li>
-        <li>Prendre la rampe bleue et eviter les escaliers.</li>
-        <li>Entrer par la porte accessible de la bibliotheque universitaire.</li>
+        <li>Prendre la rampe et eviter les escaliers.</li>
+        <li>Entrer par l'acces adapte de la bibliotheque universitaire.</li>
       </ol>
       <div class="actions">
-        <a class="secondary-button" href="carte.html">Retour a la carte</a>
-        <a class="primary-button" href="profil.html">Modifier mon profil</a>
+        <a class="button secondary" href="carte.html">Retour a la carte</a>
+        <a class="button primary" href="profil.html">Modifier le profil</a>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <p>BlueAccess - Projet web accessibilite Paris 8</p>
+  </footer>
 </body>
 </html>
