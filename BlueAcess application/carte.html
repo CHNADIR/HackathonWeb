@@ -12,25 +12,27 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">
-      <span class="brand-mark">BA</span>
+      <span class="brand-logo">BA</span>
       <span><strong>BlueAccess</strong><small>Universite Paris 8</small></span>
     </a>
-    <nav class="main-nav" aria-label="Navigation principale">
+    <nav class="top-nav" aria-label="Menu principal">
       <a href="index.html">Accueil</a>
       <a href="profil.html">Profil</a>
-      <a class="active" href="carte.html">Carte</a>
+      <a class="is-active" href="carte.html">Carte</a>
     </nav>
   </header>
 
-  <main class="page page-map">
-    <section class="page-title">
-      <p class="eyebrow">Paris 8 - Vincennes-Saint-Denis</p>
-      <h1>Plan du campus</h1>
-      <p>Recherchez une salle, un batiment ou un service accessible. Les donnees sont inspirees du plan officiel de l'universite.</p>
+  <main class="page">
+    <section class="section-title">
+      <div>
+        <p class="eyebrow">Paris 8 - Vincennes-Saint-Denis</p>
+        <h1>Plan du campus</h1>
+        <p>Recherchez une salle, un batiment ou un service accessible. Les donnees sont inspirees du plan officiel de l'universite.</p>
+      </div>
     </section>
 
     <section class="map-layout">
-      <div class="map-tools card">
+      <div class="map-panel">
         <label class="search-box">
           <span>Recherche</span>
           <input type="search" placeholder="Rechercher une salle (ex. A347)">
@@ -38,8 +40,8 @@
 
         <div>
           <p class="tool-title">Niveaux</p>
-          <div class="chips">
-            <button class="active" type="button">Niveau 0</button>
+          <div class="tabs">
+            <button class="is-active" type="button">Niveau 0</button>
             <button type="button">Niveau 1</button>
             <button type="button">Niveau 2</button>
             <button type="button">Niveau 3</button>
@@ -49,8 +51,8 @@
 
         <div>
           <p class="tool-title">Filtres</p>
-          <div class="chips">
-            <button class="active" type="button">Accessible</button>
+          <div class="tabs">
+            <button class="is-active" type="button">Accessible</button>
             <button type="button">Ascenseur</button>
             <button type="button">Toilettes PMR</button>
             <button type="button">Signalements</button>
@@ -58,16 +60,32 @@
         </div>
       </div>
 
-      <article class="campus-card card">
-        <div class="campus-banner">PARIS 8 <span>S'orienter a Paris 8</span></div>
+      <article class="map-panel">
         <div class="campus-map" aria-label="Carte simplifiee du campus">
-          <span class="road road-a"></span>
-          <span class="road road-b"></span>
-          <span class="building building-a">A</span>
-          <span class="building building-b">B</span>
-          <span class="building building-c">C</span>
-          <span class="building building-d">D</span>
-          <button class="marker marker-bu" type="button">BU</button>
+          <span class="shape shape-a">A</span>
+          <span class="shape shape-b">B</span>
+          <span class="shape shape-c">C</span>
+          <button class="marker marker-b" type="button">BU</button>
+          <button class="marker marker-a" type="button">A</button>
+          <button class="marker marker-sos" type="button">SOS</button>
+        </div>
+      </article>
+
+      <aside class="place-panel">
+        <article class="place-card">
+          <span class="place-icon">PIN</span>
+          <div>
+            <p>Batiment BU - Niveau 0 - 120 m</p>
+            <h2>Bibliotheque universitaire</h2>
+            <span>Entree adaptee, ascenseur, rampe et toilettes PMR.</span>
+          </div>
+          <a class="primary-button" href="carte.html">Tracer un itineraire accessible</a>
+        </article>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
           <button class="marker marker-a" type="button">A</button>
           <button class="marker marker-g" type="button">G</button>
           <button class="marker marker-sos" type="button">SOS</button>

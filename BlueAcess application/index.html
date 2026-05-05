@@ -18,18 +18,18 @@
         <small>Universite Paris 8</small>
       </span>
     </a>
-    <nav class="main-nav" aria-label="Navigation principale">
-      <a class="active" href="index.html">Accueil</a>
+    <nav class="top-nav" aria-label="Menu principal">
+      <a class="is-active" href="index.html">Accueil</a>
       <a href="profil.html">Profil d'accessibilite</a>
       <a href="carte.html">Plan du campus</a>
     </nav>
   </header>
 
-  <main>
-    <section class="hero page-section" aria-labelledby="home-title">
+  <main class="page">
+    <section class="hero hero-main" aria-labelledby="home-title">
       <div class="hero-copy">
         <p class="eyebrow">Bienvenue</p>
-        <h1 id="home-title">Bonjour, je suis BlueAccess.</h1>
+        <h1 id="home-title">Bonjour, je suis <span>BlueAccess</span>.</h1>
         <p>
           Votre guide d'accessibilite sur le campus Paris 8. Trouvez les batiments,
           services, ascenseurs, rampes et itineraires adaptes a votre situation.
@@ -39,27 +39,30 @@
           <a class="secondary-button" href="carte.html">Voir le plan du campus</a>
         </div>
       </div>
+    </section>
 
-      <div class="hero-visual" aria-hidden="true">
-        <span class="pin"></span>
+    <section class="section-title" aria-labelledby="menu-title">
+      <div>
+        <p class="eyebrow">Menu</p>
+        <h2 id="menu-title">Les pages de l'application</h2>
       </div>
     </section>
 
-    <section class="feature-grid page-section" aria-label="Fonctionnalites principales">
-      <article>
+    <section class="features" aria-label="Menu BlueAccess">
+      <a class="card menu-card" href="profil.html">
         <span>01</span>
-        <h2>Carte interactive</h2>
-        <p>Visualisez les batiments, services, entrees accessibles, rampes et ascenseurs.</p>
-      </article>
-      <article>
+        <h3>Profil d'accessibilite</h3>
+        <p>Choisir les besoins de l'etudiant pour adapter les trajets.</p>
+      </a>
+      <a class="card menu-card" href="carte.html">
         <span>02</span>
-        <h2>Profil adapte</h2>
-        <p>Selectionnez vos besoins pour adapter les trajets et l'interface.</p>
-      </article>
-      <article>
+        <h3>Plan du campus</h3>
+        <p>Rechercher une salle, un batiment ou un service accessible.</p>
+      </a>
+      <article class="card menu-card">
         <span>03</span>
-        <h2>Itineraire accessible</h2>
-        <p>Preparez un chemin clair vers la BU, la scolarite, la MDE ou les salles.</p>
+        <h3>Itineraire accessible</h3>
+        <p>Fonction prevue depuis la carte pour tracer un trajet PMR.</p>
       </article>
     </section>
   </main>
