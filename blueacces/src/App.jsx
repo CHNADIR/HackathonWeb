@@ -518,38 +518,53 @@ function ProfileSelector({ profiles, selectedProfile, setProfile }) {
 }
 
 function CampusMap({ route, reports }) {
+  const [mapMode, setMapMode] = useState('3d')
   const routePositions = route.path.map((id) => getPlace(id).position)
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-8">
-      <SectionHeader title="Carte interactive" text="Visualisez les batiments, services, infrastructures et obstacles en temps reel." />
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <SectionHeader title="Carte interactive" text="Visualisez les batiments, services, infrastructures et obstacles en temps reel." />
+        <div className="map-mode-switch" aria-label="Choix du mode de carte">
+          <button className={mapMode === '3d' ? 'active' : ''} onClick={() => setMapMode('3d')}>
+            Vue 3D
+          </button>
+          <button className={mapMode === '2d' ? 'active' : ''} onClick={() => setMapMode('2d')}>
+            Vue 2D
+          </button>
+        </div>
+      </div>
       <div className="grid gap-6 lg:grid-cols-[1.5fr_0.8fr]">
         <div className="overflow-hidden rounded-[2rem] border border-emerald-100 bg-white shadow-xl">
-          <MapContainer center={[48.94655, 2.36475]} zoom={18} scrollWheelZoom className="h-[65vh] min-h-[420px]">
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {places.map((place) => (
-              <CircleMarker
-                key={place.id}
-                center={place.position}
-                radius={place.type === 'Accessibilite' ? 12 : 9}
-                pathOptions={{ color: place.accessibility === 'excellent' ? '#d5001c' : '#111111', fillColor: '#ff4b5c', fillOpacity: 0.85 }}
-              >
-                <Popup>
-                  <strong>{place.name}</strong>
-                  <br />
-                  {place.description}
-                  <br />
-                  Accessibilite : {place.accessibility}
-                  <br />
-                  Etat : {place.status}
-                </Popup>
-              </CircleMarker>
-            ))}
-            {routePositions.length > 1 && <Polyline positions={routePositions} pathOptions={{ color: '#d5001c', weight: 8 }} />}
-          </MapContainer>
+          {mapMode === '3d' ? (
+            <CampusMap3D route={route} reports={reports} />
+          ) : (
+            <MapContainer center={[48.94655, 2.36475]} zoom={18} scrollWheelZoom className="h-[65vh] min-h-[420px]">
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              {places.map((place) => (
+                <CircleMarker
+                  key={place.id}
+                  center={place.position}
+                  radius={place.type === 'Accessibilite' ? 12 : 9}
+                  pathOptions={{ color: place.accessibility === 'excellent' ? '#d5001c' : '#111111', fillColor: '#ff4b5c', fillOpacity: 0.85 }}
+                >
+                  <Popup>
+                    <strong>{place.name}</strong>
+                    <br />
+                    {place.description}
+                    <br />
+                    Accessibilite : {place.accessibility}
+                    <br />
+                    Etat : {place.status}
+                  </Popup>
+                </CircleMarker>
+              ))}
+              {routePositions.length > 1 && <Polyline positions={routePositions} pathOptions={{ color: '#d5001c', weight: 8 }} />}
+            </MapContainer>
+          )}
         </div>
 
         <aside className="space-y-4">
@@ -574,6 +589,50 @@ function CampusMap({ route, reports }) {
         </aside>
       </div>
     </section>
+  )
+}
+
+function CampusMap3D({ route, reports }) {
+  const routeSet = new Set(route.path)
+  const activeReports = reports.filter((report) => report.active)
+
+  return (
+    <div className="campus-3d" aria-label="Carte 3D stylisee du campus Paris 8">
+      <div className="campus-3d-header">
+        <div>
+          <p>Paris 8 - niveau campus</p>
+          <h2>Vue 3D des bâtiments et parcours accessibles</h2>
+        </div>
+        <span>{route.path.length} points dans l itineraire</span>
+      </div>
+      <div className="campus-3d-scene">
+        <div className="campus-3d-plane">
+          <div className="campus-road campus-road-main"></div>
+          <div className="campus-road campus-road-cross"></div>
+          <div className="campus-route-line"></div>
+          <div className="campus-metro">M13</div>
+          {places.map((place) => (
+            <div
+              key={place.id}
+              className={`campus-building building-${place.id} ${routeSet.has(place.id) ? 'in-route' : ''}`}
+              title={place.name}
+            >
+              <span>{place.id === 'handicap' ? 'Handicap' : place.name.replace('Batiment ', '').replace('Bibliotheque universitaire', 'BU').replace('Maison de l etudiant', 'MDE').replace('Entree Metro M13', 'M13')}</span>
+            </div>
+          ))}
+          {activeReports.map((report) => (
+            <div key={report.id} className={`campus-alert alert-${report.place}`}>
+              !
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="campus-3d-legend">
+        <span><i className="legend-route"></i> Parcours recommandé</span>
+        <span><i className="legend-building"></i> Bâtiment Paris 8</span>
+        <span><i className="legend-alert"></i> Obstacle signalé</span>
+      </div>
+    </div>
   )
 }
 
