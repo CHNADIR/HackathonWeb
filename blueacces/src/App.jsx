@@ -6,24 +6,62 @@ import './App.css'
 const profiles = [
   {
     id: 'motor',
-    label: 'Handicap moteur',
-    description: 'Priorite aux rampes, ascenseurs et trajets sans escaliers.',
+    label: 'Mobilite reduite / fauteuil',
+    shortLabel: 'Moteur',
+    description: 'Trajet sans escaliers, avec rampes, ascenseurs et passages larges.',
+    guidance: 'Evite les escaliers et privilegie les ascenseurs fonctionnels.',
+    icon: 'M',
   },
   {
     id: 'visual',
-    label: 'Handicap visuel',
-    description: 'Instructions courtes, annonce vocale et reperes simples.',
+    label: 'Aveugle / malvoyant',
+    shortLabel: 'Visuel',
+    description: 'Guidage vocal, reperes simples et annonces etape par etape.',
+    guidance: 'Active les instructions vocales et simplifie les changements de direction.',
+    icon: 'V',
   },
   {
     id: 'auditory',
-    label: 'Handicap auditif',
-    description: 'Instructions visuelles detaillees et alertes lisibles.',
+    label: 'Sourd / malentendant',
+    shortLabel: 'Auditif',
+    description: 'Instructions visuelles claires, alertes ecrites et pictogrammes.',
+    guidance: 'Remplace les alertes sonores par des messages visuels lisibles.',
+    icon: 'A',
   },
   {
     id: 'cognitive',
     label: 'Handicap cognitif',
-    description: 'Parcours direct, vocabulaire simple et etapes limitees.',
+    shortLabel: 'Cognitif',
+    description: 'Interface simplifiee, gros boutons et consignes courtes.',
+    guidance: 'Limite le nombre d etapes et utilise un vocabulaire simple.',
+    icon: 'C',
   },
+]
+
+const permissionRequests = [
+  {
+    id: 'geolocation',
+    title: 'Geolocalisation',
+    description: 'Trouver votre position de depart sur le campus.',
+  },
+  {
+    id: 'bluetooth',
+    title: 'Bluetooth / balises indoor',
+    description: 'Preparer le guidage interieur avec balises ou capteurs.',
+  },
+  {
+    id: 'position',
+    title: 'Position campus',
+    description: 'Utiliser votre position pour calculer un itineraire adapte.',
+  },
+]
+
+const navigationItems = [
+  ['home', 'Accueil'],
+  ['map', 'Carte interactive'],
+  ['route', 'Itineraire'],
+  ['report', 'Signalement'],
+  ['profile', 'Profil'],
 ]
 
 const places = [
@@ -227,6 +265,7 @@ function buildInstructions(path, profile) {
 
 function App() {
   const [activePage, setActivePage] = useState('home')
+  const [menuOpen, setMenuOpen] = useState(false)
   const [profile, setProfile] = useState('motor')
   const [start, setStart] = useState('m13')
   const [end, setEnd] = useState('bu')
@@ -235,6 +274,11 @@ function App() {
   const [highContrast, setHighContrast] = useState(false)
   const [largeText, setLargeText] = useState(false)
   const [favorites, setFavorites] = useState([])
+  const [permissions, setPermissions] = useState({
+    geolocation: 'a-activer',
+    bluetooth: 'a-activer',
+    position: 'a-activer',
+  })
 
   const route = useMemo(() => getRoute(start, end, profile, reports), [start, end, profile, reports])
   const selectedProfile = profiles.find((item) => item.id === profile)
@@ -260,42 +304,51 @@ function App() {
     setFavorites((current) => (current.includes(label) ? current : [label, ...current]))
   }
 
+  const openPage = (page) => {
+    setActivePage(page)
+    setMenuOpen(false)
+  }
+
+  const requestPermission = (permissionId) => {
+    if (permissionId === 'geolocation' && navigator.geolocation) {
+      setPermissions((current) => ({ ...current, geolocation: 'demande-en-cours' }))
+      navigator.geolocation.getCurrentPosition(
+        () => {
+          setPermissions((current) => ({ ...current, geolocation: 'activee', position: 'activee' }))
+          setStart('m13')
+        },
+        () => {
+          setPermissions((current) => ({ ...current, geolocation: 'simulation', position: 'simulation' }))
+        },
+      )
+      return
+    }
+
+    setPermissions((current) => ({ ...current, [permissionId]: 'simulation' }))
+  }
+
   return (
     <main className={`${highContrast ? 'contrast' : ''} ${largeText ? 'large-text' : ''}`}>
       <header className="sticky top-0 z-[1000] border-b border-emerald-100 bg-white/95 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-4" aria-label="Navigation principale">
-          <button className="text-left text-2xl font-black text-[#2E7D32]" onClick={() => setActivePage('home')}>
+          <button className="text-left text-2xl font-black text-[#2E7D32]" onClick={() => openPage('home')}>
             BlueAcces
             <span className="block text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">GPS inclusif campus</span>
           </button>
-          <div className="flex flex-wrap gap-2">
-            {[
-              ['home', 'Accueil'],
-              ['map', 'Carte interactive'],
-              ['route', 'Itineraire'],
-              ['report', 'Signalement'],
-              ['profile', 'Profil'],
-            ].map(([id, label]) => (
-              <button
-                key={id}
-                className={`rounded-full px-4 py-3 text-sm font-bold transition ${
-                  activePage === id ? 'bg-[#2E7D32] text-white' : 'bg-emerald-50 text-emerald-950 hover:bg-emerald-100'
-                }`}
-                onClick={() => setActivePage(id)}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <NavigationMenu activePage={activePage} menuOpen={menuOpen} setMenuOpen={setMenuOpen} openPage={openPage} />
         </nav>
       </header>
 
       {activePage === 'home' && (
         <Hero
+          permissions={permissions}
+          requestPermission={requestPermission}
+          profiles={profiles}
           selectedProfile={selectedProfile}
+          setProfile={setProfile}
           eventEnabled={eventEnabled}
           setEventEnabled={setEventEnabled}
-          setActivePage={setActivePage}
+          setActivePage={openPage}
         />
       )}
 
@@ -333,24 +386,57 @@ function App() {
   )
 }
 
-function Hero({ selectedProfile, eventEnabled, setEventEnabled, setActivePage }) {
+function NavigationMenu({ activePage, menuOpen, setMenuOpen, openPage }) {
+  const activeLabel = navigationItems.find(([id]) => id === activePage)?.[1] || 'Menu'
+
+  return (
+    <div className="app-menu">
+      <button
+        className="flex items-center justify-between gap-3 rounded-2xl bg-[#2E7D32] px-5 py-4 font-black text-white shadow-lg"
+        aria-expanded={menuOpen}
+        aria-controls="main-menu"
+        onClick={() => setMenuOpen((current) => !current)}
+      >
+        Menu
+        <span className="rounded-full bg-white/20 px-3 py-1 text-sm">{activeLabel}</span>
+      </button>
+
+      {menuOpen && (
+        <div id="main-menu" className="app-menu-panel rounded-3xl border border-emerald-100 bg-white p-3 shadow-2xl">
+          {navigationItems.map(([id, label]) => (
+            <button
+              key={id}
+              className={`mb-2 flex w-full items-center justify-between rounded-2xl px-4 py-4 text-left font-black ${
+                activePage === id ? 'bg-[#2E7D32] text-white' : 'bg-emerald-50 text-emerald-950'
+              }`}
+              onClick={() => openPage(id)}
+            >
+              {label}
+              <span>{activePage === id ? 'Ouvert' : 'Choisir'}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Hero({ permissions, requestPermission, profiles, selectedProfile, setProfile, eventEnabled, setEventEnabled, setActivePage }) {
   return (
     <section className="bg-gradient-to-br from-emerald-950 via-[#2E7D32] to-[#81C784] text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
         <div>
-          <p className="mb-4 inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em]">
-            Inspire par une logique type Evelity
-          </p>
+          <p className="mb-4 inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em]">Demarrage du guidage</p>
           <h1 className="max-w-3xl text-4xl font-black leading-tight md:text-6xl">
-            Le GPS inclusif pour se deplacer a Paris 8.
+            Activez votre position, choisissez votre handicap, puis lancez le guidage.
           </h1>
           <p className="mt-6 max-w-2xl text-xl text-emerald-50">
-            BlueAcces guide les etudiants d un point A a un point B avec des parcours adaptes au handicap, aux
-            obstacles temporaires et aux infrastructures accessibles du campus.
+            BlueAcces doit d abord savoir ou vous etes, puis adapter le menu, les consignes et l itineraire a votre besoin : fauteuil,
+            aveugle ou malvoyant, sourd ou malentendant, ou handicap cognitif.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <button className="rounded-2xl bg-white px-6 py-4 font-black text-[#2E7D32]" onClick={() => setActivePage('route')}>
-              Calculer un itineraire
+              Lancer un guidage
             </button>
             <button className="rounded-2xl border border-white/60 px-6 py-4 font-black text-white" onClick={() => setActivePage('map')}>
               Voir la carte
@@ -358,10 +444,9 @@ function Hero({ selectedProfile, eventEnabled, setEventEnabled, setActivePage })
           </div>
         </div>
 
-        <aside className="rounded-[2rem] bg-white p-6 text-emerald-950 shadow-2xl">
-          <h2 className="text-2xl font-black">Mode actuel</h2>
-          <p className="mt-2 text-lg font-bold text-[#2E7D32]">{selectedProfile.label}</p>
-          <p className="mt-2 text-slate-700">{selectedProfile.description}</p>
+        <aside className="space-y-5 rounded-[2rem] bg-white p-6 text-emerald-950 shadow-2xl">
+          <PermissionSetup permissions={permissions} requestPermission={requestPermission} />
+          <ProfileSelector profiles={profiles} selectedProfile={selectedProfile} setProfile={setProfile} />
           <div className="mt-6 rounded-2xl bg-emerald-50 p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
@@ -379,6 +464,56 @@ function Hero({ selectedProfile, eventEnabled, setEventEnabled, setActivePage })
         </aside>
       </div>
     </section>
+  )
+}
+
+function PermissionSetup({ permissions, requestPermission }) {
+  return (
+    <div>
+      <h2 className="text-2xl font-black">1. Autoriser la position</h2>
+      <p className="mt-2 text-slate-700">L app simule aussi le mode campus si le navigateur refuse une permission.</p>
+      <div className="mt-4 grid gap-3">
+        {permissionRequests.map((permission) => (
+          <button
+            key={permission.id}
+            className="flex items-center justify-between gap-3 rounded-2xl border border-emerald-100 bg-white p-4 text-left shadow-sm"
+            onClick={() => requestPermission(permission.id)}
+          >
+            <span>
+              <strong className="block text-emerald-950">{permission.title}</strong>
+              <span className="text-sm text-slate-700">{permission.description}</span>
+            </span>
+            <span className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-black text-emerald-900">{permissions[permission.id]}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function ProfileSelector({ profiles, selectedProfile, setProfile }) {
+  return (
+    <div>
+      <h2 className="text-2xl font-black">2. Selectionner votre handicap</h2>
+      <p className="mt-2 text-slate-700">Le guidage, les consignes et le menu s adaptent a ce choix.</p>
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        {profiles.map((item) => (
+          <button
+            key={item.id}
+            className={`rounded-2xl border p-4 text-left ${
+              selectedProfile.id === item.id ? 'border-[#2E7D32] bg-emerald-100' : 'border-emerald-100 bg-white'
+            }`}
+            onClick={() => setProfile(item.id)}
+          >
+            <span className="text-2xl" aria-hidden="true">
+              {item.icon}
+            </span>
+            <strong className="mt-2 block text-emerald-950">{item.label}</strong>
+            <span className="mt-1 block text-sm text-slate-700">{item.guidance}</span>
+          </button>
+        ))}
+      </div>
+    </div>
   )
 }
 

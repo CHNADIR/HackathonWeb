@@ -46,6 +46,18 @@ button {
   min-height: 44px;
 }
 
+.app-menu {
+  position: relative;
+}
+
+.app-menu-panel {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  z-index: 1100;
+  width: min(20rem, calc(100vw - 2rem));
+}
+
 .map-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.6fr);
@@ -276,6 +288,20 @@ textarea {
 }
 
 @media (max-width: 720px) {
+  .app-menu {
+    width: 100%;
+  }
+
+  .app-menu > button {
+    width: 100%;
+  }
+
+  .app-menu-panel {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+
   .topbar {
     align-items: flex-start;
     flex-direction: column;
