@@ -3,178 +3,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlueAccess - Application mobile</title>
+  <title>BlueAccess - Application web Paris 8</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="app-page" aria-label="Application BlueAccess">
-    <section class="phone" aria-label="Prototype mobile BlueAccess">
-      <div class="phone-notch" aria-hidden="true"></div>
-      <div class="status-bar" aria-hidden="true">
-        <span>9:41</span>
-        <span class="battery"></span>
-      </div>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navigation BlueAccess">
+      <a class="brand" href="#home" data-view-link="home">
+        <span class="brand-mark">BA</span>
+        <span>
+          <strong>BlueAccess</strong>
+          <small>Universite Paris 8</small>
+        </span>
+      </a>
 
-      <div class="screens">
-        <section class="screen screen-home active" data-screen="home" aria-labelledby="home-title">
-          <header class="brand-header">
-            <div class="brand">
-              <span class="brand-logo">BA</span>
-              <strong>BlueAccess</strong>
+      <nav class="side-nav">
+        <button class="is-active" type="button" data-view-link="home">Accueil</button>
+        <button type="button" data-view-link="map">Carte du campus</button>
+        <button type="button" data-view-link="route">Itineraire</button>
+        <button type="button" data-view-link="profile">Profil</button>
+        <button type="button" data-view-link="report">Signalement</button>
+      </nav>
+
+      <section class="access-summary" aria-label="Profil actuel">
+        <p>Profil actif</p>
+        <strong id="profileSummary">Mobilite reduite</strong>
+        <span>Escaliers evites, ascenseurs et rampes privilegies.</span>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Application web</p>
+          <h1>Orientation accessible sur le campus</h1>
+        </div>
+        <label class="global-search">
+          <span>Recherche</span>
+          <input id="searchInput" type="search" placeholder="Salle A347, BU, accueil handicap...">
+        </label>
+      </header>
+
+      <section class="view is-active" data-view="home">
+        <div class="hero-card">
+          <div>
+            <p class="eyebrow">Bienvenue</p>
+            <h2>Bonjour, je suis BlueAccess.</h2>
+            <p>Votre guide web pour trouver les batiments, services et trajets accessibles de l'Universite Paris 8.</p>
+            <div class="hero-actions">
+              <button class="primary-button" type="button" data-view-link="map">Ouvrir la carte</button>
+              <button class="secondary-button" type="button" data-view-link="profile">Choisir mon profil</button>
             </div>
-            <p class="university">UNIVERSITE<span>Paris 8</span><small>Vincennes - Saint-Denis</small></p>
-          </header>
-
-          <div class="home-copy">
-            <p>Bienvenue</p>
-            <h1 id="home-title">Bonjour</h1>
-            <p>Je suis <strong>BlueAccess</strong>, votre guide d'accessibilite sur le campus.</p>
           </div>
-
-          <div class="home-art" aria-hidden="true">
-            <span class="location-pin"></span>
+          <div class="hero-visual" aria-hidden="true">
+            <span class="hero-pin"></span>
           </div>
+        </div>
 
-          <div class="start-card">
-            <button class="link-button" type="button" data-go="profile">Commencer <span>-&gt;</span></button>
+        <div class="feature-grid">
+          <article>
+            <span>01</span>
+            <h3>Carte interactive</h3>
+            <p>Batiments A, B1, B2, C, D, G, J, BU, MDE et CROUS avec niveaux du plan.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Trajet accessible</h3>
+            <p>Itineraire adapte selon le profil, les rampes, les ascenseurs et les obstacles.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Services etudiants</h3>
+            <p>Accueil handicap, scolarite, point information, MDE et services utiles.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" data-view="map">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Paris 8 - Vincennes-Saint-Denis</p>
+            <h2>Carte du campus</h2>
           </div>
-        </section>
+          <button class="primary-button" type="button" data-view-link="route">Tracer un itineraire</button>
+        </div>
 
-        <section class="screen screen-profile" data-screen="profile" aria-labelledby="profile-title">
-          <div class="progress" aria-label="Etape 2 sur 3">
-            <span></span>
-            <span></span>
-            <span class="muted"></span>
+        <div class="map-layout">
+          <section class="map-panel" aria-label="Carte interactive du campus">
+            <div class="map-toolbar">
+              <div class="level-tabs" aria-label="Niveaux du plan">
+                <button class="is-active" type="button" data-level="all">Tous</button>
+                <button type="button" data-level="Niveau 0">Niveau 0</button>
+                <button type="button" data-level="Niveau 1">Niveau 1</button>
+                <button type="button" data-level="Niveau 2">Niveau 2</button>
+                <button type="button" data-level="Niveau 3">Niveau 3</button>
+                <button type="button" data-level="Niveau 4">Niveau 4</button>
+              </div>
+              <div class="filter-tabs" aria-label="Filtres">
+                <button class="is-active" type="button" data-filter="all">Tout</button>
+                <button type="button" data-filter="accessible">Accessible</button>
+                <button type="button" data-filter="ascenseur">Ascenseur</button>
+                <button type="button" data-filter="toilettes">Toilettes PMR</button>
+              </div>
+            </div>
+
+            <div class="campus-map" id="campusMap">
+              <span class="map-road road-a"></span>
+              <span class="map-road road-b"></span>
+              <span class="building-shape shape-a">A</span>
+              <span class="building-shape shape-b">B</span>
+              <span class="building-shape shape-c">C</span>
+              <span class="building-shape shape-d">D</span>
+              <div id="markerLayer"></div>
+            </div>
+          </section>
+
+          <aside class="place-panel">
+            <h3>Lieux du campus</h3>
+            <div class="place-list" id="placeList" aria-live="polite"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" data-view="route">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Itineraire accessible</p>
+            <h2>Aller de A vers B</h2>
           </div>
+        </div>
 
-          <p class="step">Etape 2 / 3</p>
-          <h1 id="profile-title">Quel est votre <span>profil d'accessibilite ?</span></h1>
-          <p class="lead">Selectionnez un ou plusieurs profils pour adapter les itineraires et l'interface.</p>
-
-          <form class="profile-list">
-            <label class="profile-card selected">
-              <input type="checkbox" checked>
-              <span class="profile-icon">OE</span>
-              <span><strong>Deficience visuelle</strong><small>Malvoyance, cecite...</small></span>
-              <i></i>
+        <div class="route-layout">
+          <form class="route-card">
+            <label>
+              <span>Depart</span>
+              <select id="startSelect">
+                <option value="entree">Entree principale M13</option>
+                <option value="bu">Bibliotheque universitaire</option>
+                <option value="mde">Maison de l'etudiant</option>
+              </select>
             </label>
-            <label class="profile-card">
-              <input type="checkbox">
-              <span class="profile-icon">SO</span>
-              <span><strong>Deficience auditive</strong><small>Malentendance, lecture...</small></span>
-              <i></i>
+            <label>
+              <span>Destination</span>
+              <select id="destinationSelect"></select>
             </label>
-            <label class="profile-card">
-              <input type="checkbox">
-              <span class="profile-icon">CO</span>
-              <span><strong>Trouble cognitif</strong><small>Reperes simples, guidage clair...</small></span>
-              <i></i>
-            </label>
-            <label class="profile-card">
-              <input type="checkbox">
-              <span class="profile-icon">PM</span>
-              <span><strong>Mobilite reduite</strong><small>Rampes, ascenseurs, PMR...</small></span>
-              <i></i>
-            </label>
+            <button class="primary-button" id="calculateRoute" type="button">Calculer le trajet</button>
           </form>
 
-          <footer class="screen-footer">
-            <button class="primary-button" type="button" data-go="map">Continuer <span>-&gt;</span></button>
-            <p>Modifiable a tout moment dans votre profil.</p>
-          </footer>
-        </section>
-
-        <section class="screen screen-map" data-screen="map" aria-labelledby="map-title">
-          <p class="kicker">Paris 8 - Vincennes-Saint-Denis</p>
-          <h1 id="map-title">Plan du campus</h1>
-
-          <label class="search-box">
-            <span>?</span>
-            <input type="search" placeholder="Rechercher une salle (ex. A347)">
-          </label>
-
-          <div class="level-tabs" aria-label="Niveaux">
-            <button class="active" type="button">Niveau 0</button>
-            <button type="button">Niveau 1</button>
-            <button type="button">Niveau 2</button>
-          </div>
-
-          <article class="plan-card">
-            <div class="plan-banner">PARIS 8 <span>S'orienter a Paris 8</span></div>
-            <div class="campus-plan" aria-hidden="true">
-              <span class="building b1"></span>
-              <span class="building b2"></span>
-              <span class="building b3"></span>
-              <span class="building b4"></span>
-              <button class="map-pin">A</button>
-            </div>
-            <div class="legend">
-              <span><i></i>Accessible PMR</span>
-              <span><i></i>Ascenseur</span>
-              <span><i></i>Ouvert</span>
-            </div>
+          <article class="steps-card">
+            <h3 id="routeTitle">Trajet recommande</h3>
+            <p id="routeMeta">Selectionnez une destination pour voir un trajet accessible.</p>
+            <ol id="routeSteps"></ol>
           </article>
+        </div>
+      </section>
 
-          <button class="primary-button route-button" type="button" data-go="campus">Tracer un itineraire accessible</button>
-
-          <nav class="bottom-nav" aria-label="Navigation principale">
-            <button type="button" data-go="home"><span>HOME</span>Accueil</button>
-            <button class="active" type="button" data-go="map"><span>MAP</span>Carte</button>
-            <button type="button" data-go="campus"><span>PATH</span>Itineraire</button>
-            <button type="button" data-go="profile"><span>USER</span>Profil</button>
-          </nav>
-        </section>
-
-        <section class="screen screen-campus" data-screen="campus" aria-labelledby="campus-title">
-          <p class="kicker">Campus</p>
-          <h1 id="campus-title">Carte du campus</h1>
-
-          <div class="search-row">
-            <label class="search-box">
-              <span>?</span>
-              <input type="search" placeholder="Rechercher un batiment...">
-            </label>
-            <button class="filter-button" type="button">CFG</button>
+      <section class="view" data-view="profile">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Profil d'accessibilite</p>
+            <h2>Adapter l'interface et les trajets</h2>
           </div>
+        </div>
 
-          <div class="chips">
-            <button class="active" type="button">Accessible</button>
-            <button type="button">Signalement</button>
+        <form class="profile-grid" id="profileForm">
+          <label class="profile-option is-selected">
+            <input type="checkbox" value="Mobilite reduite" checked>
+            <span>PMR</span>
+            <strong>Mobilite reduite</strong>
+            <small>Eviter les escaliers, privilegier rampes et ascenseurs.</small>
+          </label>
+          <label class="profile-option">
+            <input type="checkbox" value="Deficience visuelle">
+            <span>VUE</span>
+            <strong>Deficience visuelle</strong>
+            <small>Contraste eleve, indications claires, reperes textuels.</small>
+          </label>
+          <label class="profile-option">
+            <input type="checkbox" value="Deficience auditive">
+            <span>SON</span>
+            <strong>Deficience auditive</strong>
+            <small>Alertes visuelles, messages explicites, pictogrammes.</small>
+          </label>
+          <label class="profile-option">
+            <input type="checkbox" value="Troubles cognitifs">
+            <span>ABC</span>
+            <strong>Troubles cognitifs</strong>
+            <small>Mode simple avec peu d'informations et etapes courtes.</small>
+          </label>
+        </form>
+      </section>
+
+      <section class="view" data-view="report">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Signalements</p>
+            <h2>Un equipement bloque ?</h2>
           </div>
+        </div>
 
-          <div class="campus-map" aria-hidden="true">
-            <span class="road road-one"></span>
-            <span class="road road-two"></span>
-            <span class="white-block"></span>
-            <button class="bubble bubble-a">A</button>
-            <button class="bubble bubble-b">B</button>
-            <button class="bubble bubble-sos">SOS</button>
-            <span class="sos-label">Alerter la securite</span>
+        <form class="report-card" id="reportForm">
+          <label>
+            <span>Lieu concerne</span>
+            <select id="reportPlace"></select>
+          </label>
+          <label>
+            <span>Probleme</span>
+            <select id="reportType">
+              <option>Ascenseur en panne</option>
+              <option>Rampe bloquee</option>
+              <option>Entree fermee</option>
+              <option>Passage inaccessible</option>
+            </select>
+          </label>
+          <label>
+            <span>Description</span>
+            <textarea id="reportDescription" placeholder="Exemple: ascenseur du batiment A indisponible depuis ce matin"></textarea>
+          </label>
+          <button class="primary-button" type="submit">Envoyer le signalement</button>
+          <p id="reportMessage" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
 
-            <article class="place-card">
-              <span class="place-icon">PIN</span>
-              <div>
-                <p>Batiment A - 120 m</p>
-                <h2>Bibliotheque universitaire</h2>
-                <span>Ascenseur - Rampe - Toilettes PMR</span>
-              </div>
-              <button class="primary-button" type="button">Itineraire accessible</button>
-            </article>
-          </div>
+    <aside class="details-panel" aria-label="Lieu selectionne">
+      <article class="selected-place">
+        <span class="place-icon">PIN</span>
+        <p id="selectedMeta">Batiment BU - Niveau 0 - 120 m</p>
+        <h2 id="selectedName">Bibliotheque universitaire</h2>
+        <span id="selectedDescription">Entree adaptee, ascenseur, rampe et toilettes PMR.</span>
+        <div class="selected-tags" id="selectedTags"></div>
+        <button class="primary-button" type="button" data-view-link="route">Itineraire accessible</button>
+      </article>
 
-          <nav class="bottom-nav" aria-label="Navigation principale">
-            <button type="button" data-go="home"><span>HOME</span>Accueil</button>
-            <button class="active" type="button" data-go="map"><span>MAP</span>Carte</button>
-            <button type="button" data-go="campus"><span>PATH</span>Itineraire</button>
-            <button type="button" data-go="profile"><span>USER</span>Profil</button>
-          </nav>
-        </section>
-      </div>
-    </section>
-  </main>
+      <article class="sos-card">
+        <strong>SOS securite</strong>
+        <p>Besoin d'aide sur le campus ? Alerter la securite ou signaler un obstacle.</p>
+        <button type="button" data-view-link="report">Signaler</button>
+      </article>
+    </aside>
+  </div>
 
   <script src="app.js"></script>
 </body>
