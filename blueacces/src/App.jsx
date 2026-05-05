@@ -331,7 +331,7 @@ function App() {
     <main className={`${highContrast ? 'contrast' : ''} ${largeText ? 'large-text' : ''}`}>
       <header className="sticky top-0 z-[1000] border-b border-emerald-100 bg-white/95 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-4" aria-label="Navigation principale">
-          <button className="text-left text-2xl font-black text-[#2E7D32]" onClick={() => openPage('home')}>
+          <button className="text-left text-2xl font-black text-[#E30613]" onClick={() => openPage('home')}>
             BlueAcces
             <span className="block text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">GPS inclusif campus</span>
           </button>
@@ -392,7 +392,7 @@ function NavigationMenu({ activePage, menuOpen, setMenuOpen, openPage }) {
   return (
     <div className="app-menu">
       <button
-        className="flex items-center justify-between gap-3 rounded-2xl bg-[#2E7D32] px-5 py-4 font-black text-white shadow-lg"
+        className="flex items-center justify-between gap-3 rounded-2xl bg-[#E30613] px-5 py-4 font-black text-white shadow-lg"
         aria-expanded={menuOpen}
         aria-controls="main-menu"
         onClick={() => setMenuOpen((current) => !current)}
@@ -407,7 +407,7 @@ function NavigationMenu({ activePage, menuOpen, setMenuOpen, openPage }) {
             <button
               key={id}
               className={`mb-2 flex w-full items-center justify-between rounded-2xl px-4 py-4 text-left font-black ${
-                activePage === id ? 'bg-[#2E7D32] text-white' : 'bg-emerald-50 text-emerald-950'
+                activePage === id ? 'bg-[#E30613] text-white' : 'bg-emerald-50 text-emerald-950'
               }`}
               onClick={() => openPage(id)}
             >
@@ -423,7 +423,7 @@ function NavigationMenu({ activePage, menuOpen, setMenuOpen, openPage }) {
 
 function Hero({ permissions, requestPermission, profiles, selectedProfile, setProfile, eventEnabled, setEventEnabled, setActivePage }) {
   return (
-    <section className="bg-gradient-to-br from-emerald-950 via-[#2E7D32] to-[#81C784] text-white">
+    <section className="bg-gradient-to-br from-emerald-950 via-[#E30613] to-[#FF4A55] text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
         <div>
           <p className="mb-4 inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em]">Demarrage du guidage</p>
@@ -435,7 +435,7 @@ function Hero({ permissions, requestPermission, profiles, selectedProfile, setPr
             aveugle ou malvoyant, sourd ou malentendant, ou handicap cognitif.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <button className="rounded-2xl bg-white px-6 py-4 font-black text-[#2E7D32]" onClick={() => setActivePage('route')}>
+            <button className="rounded-2xl bg-white px-6 py-4 font-black text-[#E30613]" onClick={() => setActivePage('route')}>
               Lancer un guidage
             </button>
             <button className="rounded-2xl border border-white/60 px-6 py-4 font-black text-white" onClick={() => setActivePage('map')}>
@@ -454,7 +454,7 @@ function Hero({ permissions, requestPermission, profiles, selectedProfile, setPr
                 <p className="text-sm text-slate-700">Jeu de piste QR codes, temporaire et administrable.</p>
               </div>
               <button
-                className={`rounded-full px-4 py-2 font-bold ${eventEnabled ? 'bg-[#2E7D32] text-white' : 'bg-slate-200 text-slate-800'}`}
+                className={`rounded-full px-4 py-2 font-bold ${eventEnabled ? 'bg-[#E30613] text-white' : 'bg-slate-200 text-slate-800'}`}
                 onClick={() => setEventEnabled(!eventEnabled)}
               >
                 {eventEnabled ? 'Actif' : 'Inactif'}
@@ -501,7 +501,7 @@ function ProfileSelector({ profiles, selectedProfile, setProfile }) {
           <button
             key={item.id}
             className={`rounded-2xl border p-4 text-left ${
-              selectedProfile.id === item.id ? 'border-[#2E7D32] bg-emerald-100' : 'border-emerald-100 bg-white'
+              selectedProfile.id === item.id ? 'border-[#E30613] bg-emerald-100' : 'border-emerald-100 bg-white'
             }`}
             onClick={() => setProfile(item.id)}
           >
@@ -535,7 +535,7 @@ function CampusMap({ route, reports }) {
                 key={place.id}
                 center={place.position}
                 radius={place.type === 'Accessibilite' ? 12 : 9}
-                pathOptions={{ color: place.accessibility === 'excellent' ? '#2E7D32' : '#0f766e', fillColor: '#81C784', fillOpacity: 0.85 }}
+                pathOptions={{ color: place.accessibility === 'excellent' ? '#d5001c' : '#111111', fillColor: '#ff4b5c', fillOpacity: 0.85 }}
               >
                 <Popup>
                   <strong>{place.name}</strong>
@@ -548,7 +548,7 @@ function CampusMap({ route, reports }) {
                 </Popup>
               </CircleMarker>
             ))}
-            {routePositions.length > 1 && <Polyline positions={routePositions} pathOptions={{ color: '#2E7D32', weight: 8 }} />}
+            {routePositions.length > 1 && <Polyline positions={routePositions} pathOptions={{ color: '#d5001c', weight: 8 }} />}
           </MapContainer>
         </div>
 
@@ -558,7 +558,7 @@ function CampusMap({ route, reports }) {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-xl font-black text-emerald-950">{place.name}</h3>
-                  <p className="font-bold text-[#2E7D32]">{place.type}</p>
+                  <p className="font-bold text-[#E30613]">{place.type}</p>
                 </div>
                 <span className="rounded-full bg-emerald-100 px-3 py-1 text-sm font-bold text-emerald-900">{place.accessibility}</span>
               </div>
@@ -610,7 +610,7 @@ function RoutePlanner({ profile, setProfile, start, setStart, end, setEnd, route
               ))}
             </select>
           </Field>
-          <button type="button" className="mt-4 w-full rounded-2xl bg-[#2E7D32] px-5 py-4 font-black text-white" onClick={saveFavorite}>
+          <button type="button" className="mt-4 w-full rounded-2xl bg-[#E30613] px-5 py-4 font-black text-white" onClick={saveFavorite}>
             Sauvegarder ce trajet
           </button>
         </form>
@@ -655,7 +655,7 @@ function Reports({ reports, setReports, addReport }) {
               <option value="bloquant">Bloquant pour le parcours</option>
             </select>
           </Field>
-          <button className="mt-4 w-full rounded-2xl bg-[#2E7D32] px-5 py-4 font-black text-white">Envoyer le signalement</button>
+          <button className="mt-4 w-full rounded-2xl bg-[#E30613] px-5 py-4 font-black text-white">Envoyer le signalement</button>
         </form>
         <div className="space-y-4">
           {reports.map((report) => (
@@ -719,7 +719,7 @@ function Profile({ profile, setProfile, highContrast, setHighContrast, largeText
 function SectionHeader({ title, text }) {
   return (
     <div className="mb-6">
-      <p className="font-black uppercase tracking-[0.2em] text-[#2E7D32]">BlueAcces</p>
+      <p className="font-black uppercase tracking-[0.2em] text-[#E30613]">BlueAcces</p>
       <h1 className="text-4xl font-black text-emerald-950">{title}</h1>
       <p className="mt-3 max-w-3xl text-lg text-slate-700">{text}</p>
     </div>
@@ -739,7 +739,7 @@ function Toggle({ label, enabled, onClick }) {
   return (
     <button className="mb-3 flex w-full items-center justify-between rounded-2xl bg-emerald-50 p-4 font-black text-emerald-950" onClick={onClick}>
       {label}
-      <span className={`rounded-full px-4 py-2 ${enabled ? 'bg-[#2E7D32] text-white' : 'bg-slate-200 text-slate-800'}`}>
+      <span className={`rounded-full px-4 py-2 ${enabled ? 'bg-[#E30613] text-white' : 'bg-slate-200 text-slate-800'}`}>
         {enabled ? 'Oui' : 'Non'}
       </span>
     </button>
