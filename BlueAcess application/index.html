@@ -3,311 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlueAccess - Application mobile</title>
+  <title>BlueAccess - Maquette mobile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="app-shell">
-    <aside class="project-panel" aria-labelledby="project-title">
-      <p class="eyebrow">Application mobile</p>
-      <h1 id="project-title">Blue<span>Access</span></h1>
-      <p>
-        BlueAccess aide les etudiants de Paris 8 a se deplacer avec plus
-        d'autonomie grace a une carte interactive, des itineraire accessibles,
-        des profils adaptes et des signalements d'obstacles.
-      </p>
-
-      <ul class="feature-summary">
-        <li><span>MAP</span> Carte du campus avec batiments, services et equipements.</li>
-        <li><span>PMR</span> Itineraires qui evitent escaliers, pentes et passages bloques.</li>
-        <li><span>VUE</span> Guidage vocal, contraste eleve et mode simplifie.</li>
-        <li><span>SOS</span> Signalements en temps reel pour recalculer un trajet.</li>
-      </ul>
-
-      <div class="panel-actions">
-        <a class="store-badge" href="#app">Ouvrir l'application</a>
-        <a class="outline-link" href="#features">Fonctionnalites</a>
-      </div>
-    </aside>
-
-    <section class="phone-stage" id="app" aria-label="Application BlueAccess">
+  <main class="mockup-board" aria-label="Premieres pages BlueAccess">
+    <article class="phone-shot" aria-labelledby="home-caption">
       <div class="phone">
+        <div class="notch" aria-hidden="true"></div>
         <div class="status-bar" aria-hidden="true">
           <span>9:41</span>
           <span class="battery"></span>
         </div>
 
-        <div class="screen-stack">
-          <section class="screen screen--home is-active" data-screen="home" aria-labelledby="home-title">
-            <header class="brand-row">
-              <div class="brand-lockup">
-                <span class="brand-logo">BA</span>
-                <strong>BlueAccess</strong>
-              </div>
-              <p class="university">UNIVERSITE<span>Paris 8</span></p>
-            </header>
-
-            <div class="welcome">
-              <p>Bienvenue</p>
-              <h2 id="home-title">Bonjour</h2>
-              <p>Je suis BlueAccess, votre guide d'accessibilite sur le campus.</p>
+        <section class="screen home-screen">
+          <header class="brand-row">
+            <div class="brand-lockup">
+              <span class="logo-mark">BA</span>
+              <strong>BlueAccess</strong>
             </div>
+            <p class="university">UNIVERSIT&Eacute;<span>Paris 8</span><small>Vincennes - Saint-Denis</small></p>
+          </header>
 
-            <div class="home-art" aria-hidden="true">
-              <div class="pin"></div>
+          <div class="welcome">
+            <p>Bienvenue</p>
+            <h1>Bonjour</h1>
+            <p>Je suis <strong>BlueAccess</strong>, votre guide d'accessibilit&eacute; sur le campus.</p>
+          </div>
+
+          <div class="home-illustration" aria-hidden="true">
+            <span class="big-pin"></span>
+          </div>
+
+          <div class="start-panel">
+            <a href="#profile-caption">Commencer <span>-&gt;</span></a>
+          </div>
+        </section>
+      </div>
+      <h2 id="home-caption">01 - ACCUEIL</h2>
+    </article>
+
+    <article class="phone-shot" aria-labelledby="profile-caption">
+      <div class="phone">
+        <div class="notch" aria-hidden="true"></div>
+        <div class="status-bar" aria-hidden="true">
+          <span>9:41</span>
+          <span class="battery"></span>
+        </div>
+
+        <section class="screen profile-screen">
+          <div class="progress" aria-label="Etape 2 sur 3">
+            <span></span>
+            <span></span>
+            <span class="empty"></span>
+          </div>
+          <p class="step-label">&Eacute;tape 2 / 3</p>
+          <h1>Quel est votre <span>profil d'accessibilit&eacute; ?</span></h1>
+          <p class="lead">S&eacute;lectionnez un ou plusieurs profils pour adapter les itin&eacute;raires et l'interface.</p>
+
+          <div class="profile-list">
+            <label class="profile-card">
+              <span class="icon-badge">OE</span>
+              <span><strong>D&eacute;ficience visuelle</strong><small>Malvoyance, c&eacute;cit...</small></span>
+              <input type="checkbox" aria-label="Deficience visuelle">
+            </label>
+            <label class="profile-card">
+              <span class="icon-badge">SO</span>
+              <span><strong>D&eacute;ficience auditive</strong><small>Malentendance, l...</small></span>
+              <input type="checkbox" aria-label="Deficience auditive">
+            </label>
+            <label class="profile-card">
+              <span class="icon-badge">CO</span>
+              <span><strong>Trouble cognitif</strong><small>Rep&egrave;res simples...</small></span>
+              <input type="checkbox" aria-label="Trouble cognitif">
+            </label>
+          </div>
+
+          <button class="primary-button" type="button">Continuer <span>-&gt;</span></button>
+          <p class="profile-note">Modifiable &agrave; tout moment dans votre profil.</p>
+        </section>
+      </div>
+      <h2 id="profile-caption">02 - PROFIL D'ACCESSIBILIT&Eacute;</h2>
+    </article>
+
+    <article class="phone-shot" aria-labelledby="plan-caption">
+      <div class="phone">
+        <div class="notch" aria-hidden="true"></div>
+        <div class="status-bar" aria-hidden="true">
+          <span>9:41</span>
+          <span class="battery"></span>
+        </div>
+
+        <section class="screen plan-screen">
+          <p class="campus-kicker">Paris 8 - Vincennes-Saint-Denis</p>
+          <h1>Plan du campus</h1>
+
+          <label class="search-box">
+            <span aria-hidden="true">?</span>
+            <input type="search" placeholder="Rechercher une salle (ex. A347)">
+          </label>
+
+          <div class="level-tabs" aria-label="Niveaux">
+            <button class="active" type="button">Niveau 0</button>
+            <button type="button">Niveau 1</button>
+            <button type="button">Niveau 2</button>
+          </div>
+
+          <article class="map-card">
+            <div class="map-topbar">PARIS 8 &gt;&gt;&gt;<span>S'orienter &agrave; Paris 8</span><strong>NIVEAU 0</strong></div>
+            <div class="campus-plan" aria-label="Plan simplifie du campus">
+              <span class="map-zone zone-a"></span>
+              <span class="map-zone zone-b"></span>
+              <span class="map-zone zone-c"></span>
+              <span class="map-zone zone-d"></span>
+              <span class="map-path path-one"></span>
+              <span class="map-path path-two"></span>
+              <span class="map-path path-three"></span>
+              <span class="pin-small">A</span>
             </div>
-
-            <div class="start-card">
-              <button class="primary-button" type="button" data-go-to="profile">Commencer -></button>
-              <button class="text-button" type="button" data-go-to="map">Voir directement la carte</button>
+            <div class="legend">
+              <span><i class="dot dot-blue"></i> Accessible PMR</span>
+              <span><i class="dot dot-purple"></i> Ascenseur</span>
+              <span><i class="dot dot-green"></i> Ouvert</span>
             </div>
-          </section>
+          </article>
 
-          <section class="screen" data-screen="profile" aria-labelledby="profile-title">
-            <div class="top-row">
-              <button class="back-button" type="button" data-go-to="home" aria-label="Retour">&lt;</button>
-              <p class="step">Profil d'accessibilite</p>
-            </div>
+          <button class="route-button" type="button">Tracer un itin&eacute;raire accessible</button>
 
-            <div class="progress" aria-label="Etape 2 sur 3">
-              <span class="filled"></span>
-              <span class="filled"></span>
-              <span></span>
-            </div>
+          <nav class="bottom-nav" aria-label="Navigation">
+            <a href="#home-caption"><span>HOME</span>Accueil</a>
+            <a class="active" href="#plan-caption"><span>MAP</span>Carte</a>
+            <a href="#campus-caption"><span>PATH</span>Itin&eacute;raire</a>
+            <a href="#profile-caption"><span>PMR</span>Profil</a>
+          </nav>
+        </section>
+      </div>
+      <h2 id="plan-caption">03 - PLAN DU CAMPUS</h2>
+    </article>
 
-            <h2 class="screen-title" id="profile-title">Quel est votre <span>profil d'accessibilite ?</span></h2>
-            <p class="lead">Selectionnez un ou plusieurs profils pour adapter les itineraires et l'interface.</p>
+    <article class="phone-shot" aria-labelledby="campus-caption">
+      <div class="phone">
+        <div class="notch" aria-hidden="true"></div>
+        <div class="status-bar" aria-hidden="true">
+          <span>9:41</span>
+          <span class="battery"></span>
+        </div>
 
-            <form class="profile-list" id="profileForm">
-              <label class="profile-card">
-                <input type="checkbox" name="profile" value="mobilite" checked>
-                <span class="option-icon">PMR</span>
-                <span><strong>Mobilite reduite</strong><small>Rampes, ascenseurs, passages larges</small></span>
-                <span class="check-dot"></span>
-              </label>
-              <label class="profile-card">
-                <input type="checkbox" name="profile" value="visuel">
-                <span class="option-icon">VUE</span>
-                <span><strong>Deficience visuelle</strong><small>Guidage vocal, contraste, grands textes</small></span>
-                <span class="check-dot"></span>
-              </label>
-              <label class="profile-card">
-                <input type="checkbox" name="profile" value="auditif">
-                <span class="option-icon">SON</span>
-                <span><strong>Deficience auditive</strong><small>Alertes visuelles et vibrations</small></span>
-                <span class="check-dot"></span>
-              </label>
-              <label class="profile-card">
-                <input type="checkbox" name="profile" value="cognitif">
-                <span class="option-icon">ABC</span>
-                <span><strong>Troubles cognitifs</strong><small>Mode simple et consignes courtes</small></span>
-                <span class="check-dot"></span>
-              </label>
-            </form>
+        <section class="screen campus-screen">
+          <p class="campus-kicker">Campus</p>
+          <h1>Carte du campus</h1>
 
-            <footer class="screen-footer">
-              <button class="primary-button" type="button" data-go-to="map">Continuer</button>
-              <p class="hint">Profil actuel: <span id="profileSummary"></span></p>
-            </footer>
-          </section>
-
-          <section class="screen" data-screen="map" aria-labelledby="map-title">
-            <div class="top-row">
-              <button class="back-button" type="button" data-go-to="profile" aria-label="Retour">&lt;</button>
-              <button class="icon-button" type="button" data-go-to="settings" aria-label="Reglages">CFG</button>
-            </div>
-
-            <p class="step">Paris 8 - Vincennes-Saint-Denis</p>
-            <h2 class="screen-title" id="map-title">Carte du campus</h2>
-
+          <div class="search-row">
             <label class="search-box">
               <span aria-hidden="true">?</span>
-              <input id="searchInput" type="search" placeholder="Rechercher une salle (ex. A347)" autocomplete="off">
+              <input type="search" placeholder="Rechercher un b&acirc;timent...">
             </label>
+            <button class="filter-button" type="button" aria-label="Filtres">=</button>
+          </div>
 
-            <div class="level-tabs" aria-label="Niveaux du plan Paris 8">
-              <button class="level-chip" type="button" data-level="Niveau 0">Niveau 0</button>
-              <button class="level-chip" type="button" data-level="Niveau 1">Niveau 1</button>
-              <button class="level-chip" type="button" data-level="Niveau 2">Niveau 2</button>
-              <button class="level-chip" type="button" data-level="Niveau 3">Niveau 3</button>
-              <button class="level-chip" type="button" data-level="Niveau 4">Niveau 4</button>
-              <button class="level-chip is-active" type="button" data-level="all">Tous</button>
-            </div>
+          <div class="quick-filters">
+            <button class="active" type="button">Accessible</button>
+            <button type="button">Signalement</button>
+          </div>
 
-            <div class="quick-filters quick-filters--compact" aria-label="Filtres d'accessibilite">
-              <button class="filter-chip is-active" type="button" data-filter="accessible">Accessible</button>
-              <button class="filter-chip is-active" type="button" data-filter="ascenseur">Ascenseur</button>
-              <button class="filter-chip is-active" type="button" data-filter="toilettes">PMR</button>
-            </div>
+          <div class="campus-map">
+            <span class="road road-one"></span>
+            <span class="road road-two"></span>
+            <span class="road road-three"></span>
+            <span class="building-card"></span>
+            <button class="bubble bubble-a" type="button">A</button>
+            <button class="bubble bubble-b" type="button">B</button>
+            <button class="bubble bubble-sos" type="button"><span>SOS</span></button>
+            <span class="sos-label">Alerter la s&eacute;curit&eacute;</span>
 
-            <article class="map-card">
-              <div class="campus-plan" id="campusMap" aria-label="Plan interactif simplifie">
-                <span class="building-shape shape-a"></span>
-                <span class="building-shape shape-b"></span>
-                <span class="building-shape shape-c"></span>
+            <article class="place-card">
+              <span class="place-icon">PIN</span>
+              <div>
+                <p>B&acirc;timent A - 120 m</p>
+                <h3>Biblioth&egrave;que universitaire</h3>
+                <span>Ascenseur &middot; Rampe &middot; Toilettes PMR</span>
               </div>
-              <div class="legend">
-                <span><i class="dot"></i> Accessible</span>
-                <span><i class="dot dot--green"></i> Ouvert</span>
-                <span><i class="dot dot--orange"></i> A verifier</span>
-              </div>
-              <p class="map-source">Source: plan officiel Universite Paris 8, niveaux 0 a 4.</p>
+              <a href="#plan-caption">Itin&eacute;raire accessible</a>
             </article>
+          </div>
 
-            <button class="primary-button" type="button" data-go-to="route">Tracer un itineraire accessible</button>
-
-            <div class="results-panel">
-              <div class="place-list" id="placeList" aria-live="polite"></div>
-            </div>
-
-            <nav class="bottom-nav" aria-label="Navigation principale">
-              <button class="nav-item" type="button" data-screen="home"><span>HOME</span>Accueil</button>
-              <button class="nav-item is-active" type="button" data-screen="map"><span>MAP</span>Carte</button>
-              <button class="nav-item" type="button" data-screen="route"><span>PATH</span>Itineraire</button>
-              <button class="nav-item" type="button" data-screen="settings"><span>PMR</span>Profil</button>
-            </nav>
-          </section>
-
-          <section class="screen screen--campus" data-screen="route" aria-labelledby="route-title">
-            <p class="step">Campus</p>
-            <h2 class="screen-title" id="route-title">Carte du campus</h2>
-
-            <div class="search-row">
-              <label class="search-box">
-                <span aria-hidden="true">?</span>
-                <input type="search" placeholder="Rechercher un batiment...">
-              </label>
-              <button class="icon-button filter-round" type="button" data-go-to="settings" aria-label="Filtres">CFG</button>
-            </div>
-
-            <div class="quick-filters campus-filter-row" aria-label="Filtres rapides">
-              <button class="filter-chip is-active" type="button" data-filter="accessible">Accessible</button>
-              <button class="filter-chip" type="button" data-screen="reports">Signalement</button>
-            </div>
-
-            <div class="campus-visual" aria-label="Carte visuelle du campus">
-              <span class="campus-road campus-road--one"></span>
-              <span class="campus-road campus-road--two"></span>
-              <span class="campus-building"></span>
-              <button class="campus-bubble campus-bubble--a" type="button" data-go-to="map">A</button>
-              <button class="campus-bubble campus-bubble--b" type="button" data-go-to="map">B</button>
-              <button class="campus-bubble campus-bubble--sos" type="button" data-go-to="reports">SOS</button>
-              <span class="campus-sos-label">Alerter la securite</span>
-
-              <article class="place-card selected-place">
-                <span class="place-icon">PIN</span>
-                <span>
-                  <strong id="selectedPlaceName"></strong>
-                  <small id="selectedPlaceMeta"></small>
-                </span>
-                <p id="selectedPlaceDescription"></p>
-                <div class="feature-tags" id="selectedPlaceFeatures"></div>
-                <em id="selectedPlaceStatus"></em>
-              </article>
-            </div>
-
-            <form class="route-form route-form--hidden">
-              <label class="select-box">
-                <span>Destination</span>
-                <select id="destinationSelect"></select>
-              </label>
-            </form>
-
-            <button class="primary-button" type="button" id="startRouteButton">Itineraire accessible</button>
-
-            <article class="route-summary route-summary--compact">
-              <h3 id="routeTitle">Trajet recommande</h3>
-              <p id="routeMeta"></p>
-              <p>Evite: <strong id="routeAvoids"></strong></p>
-              <ol class="step-list" id="routeSteps"></ol>
-            </article>
-
-            <nav class="bottom-nav" aria-label="Navigation principale">
-              <button class="nav-item" type="button" data-screen="home"><span>HOME</span>Accueil</button>
-              <button class="nav-item is-active" type="button" data-screen="map"><span>MAP</span>Carte</button>
-              <button class="nav-item" type="button" data-screen="route"><span>PATH</span>Itineraire</button>
-              <button class="nav-item" type="button" data-screen="settings"><span>PMR</span>Profil</button>
-            </nav>
-          </section>
-
-          <section class="screen" data-screen="reports" aria-labelledby="reports-title">
-            <div class="top-row">
-              <button class="back-button" type="button" data-go-to="map" aria-label="Retour">&lt;</button>
-              <p class="step">Signalement</p>
-            </div>
-
-            <h2 class="screen-title" id="reports-title">Un obstacle sur le campus ?</h2>
-            <p class="lead">Signalez une panne, une rampe bloquee ou une porte inaccessible.</p>
-
-            <form class="report-list" id="reportForm">
-              <label class="select-box">
-                <span>Lieu</span>
-                <select id="reportPlace"></select>
-              </label>
-              <label class="select-box">
-                <span>Probleme</span>
-                <select id="reportType">
-                  <option>Ascenseur en panne</option>
-                  <option>Rampe bloquee</option>
-                  <option>Porte accessible fermee</option>
-                  <option>Passage temporairement inaccessible</option>
-                </select>
-              </label>
-              <textarea id="reportDescription" placeholder="Description courte du probleme"></textarea>
-              <button class="primary-button" type="submit">Envoyer le signalement</button>
-            </form>
-
-            <p class="toast-message" id="reportFeedback" aria-live="polite"></p>
-
-            <nav class="bottom-nav" aria-label="Navigation principale">
-              <button class="nav-item" type="button" data-screen="map"><span>MAP</span>Carte</button>
-              <button class="nav-item" type="button" data-screen="route"><span>GO</span>Itineraire</button>
-              <button class="nav-item is-active" type="button" data-screen="reports"><span>SOS</span>Signaler</button>
-              <button class="nav-item" type="button" data-screen="settings"><span>CFG</span>Profil</button>
-            </nav>
-          </section>
-
-          <section class="screen" data-screen="settings" aria-labelledby="settings-title">
-            <div class="top-row">
-              <button class="back-button" type="button" data-go-to="map" aria-label="Retour">&lt;</button>
-              <p class="step">Preferences</p>
-            </div>
-
-            <h2 class="screen-title" id="settings-title">Adapter l'interface</h2>
-            <p class="lead">Activez les aides utiles selon votre situation.</p>
-
-            <div class="accessibility-tools" id="features">
-              <button class="quick-action preference-button" type="button" data-preference="offline">
-                <span>OFF</span> Mode hors ligne
-              </button>
-              <button class="quick-action preference-button" type="button" data-preference="simple">
-                <span>ABC</span> Mode simplifie
-              </button>
-              <button class="quick-action preference-button" type="button" data-preference="contrast">
-                <span>HI</span> Contraste eleve
-              </button>
-              <button class="quick-action" type="button" data-go-to="profile">
-                <span>PMR</span> Modifier le profil
-              </button>
-            </div>
-
-            <p class="hint" id="offlineStatus">Mode hors ligne inactif.</p>
-
-            <nav class="bottom-nav" aria-label="Navigation principale">
-              <button class="nav-item" type="button" data-screen="map"><span>MAP</span>Carte</button>
-              <button class="nav-item" type="button" data-screen="route"><span>GO</span>Itineraire</button>
-              <button class="nav-item" type="button" data-screen="reports"><span>SOS</span>Signaler</button>
-              <button class="nav-item is-active" type="button" data-screen="settings"><span>CFG</span>Profil</button>
-            </nav>
-          </section>
-        </div>
+          <nav class="bottom-nav" aria-label="Navigation">
+            <a href="#home-caption"><span>HOME</span>Accueil</a>
+            <a class="active" href="#campus-caption"><span>MAP</span>Carte</a>
+            <a href="#plan-caption"><span>PATH</span>Itin&eacute;raire</a>
+            <a href="#profile-caption"><span>PMR</span>Profil</a>
+          </nav>
+        </section>
       </div>
-    </section>
+      <h2 id="campus-caption">03 : PLAN DU CAMPUS</h2>
+    </article>
   </main>
-
-  <script src="app.js"></script>
 </body>
 </html>
