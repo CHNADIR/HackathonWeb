@@ -887,6 +887,116 @@ body {
    padding: 1.5rem;
 }
 
+.campus-map{
+   background: #f7fbfd;
+}
+
+.map-intro,
+.map-panel,
+.map-legend,
+.map-accessibility{
+   background: var(--white);
+   border-radius: 2rem;
+   box-shadow: var(--box-shadow);
+   margin-bottom: 3rem;
+   padding: 3rem;
+}
+
+.map-intro .eyebrow{
+   color: var(--tomato);
+   display: inline-block;
+   font-size: 1.5rem;
+   font-weight: 600;
+   letter-spacing: .1rem;
+   margin-bottom: 1rem;
+   text-transform: uppercase;
+}
+
+.map-intro h2,
+.map-legend h2,
+.map-accessibility h2{
+   color: var(--black);
+   font-size: 3.5rem;
+   margin-bottom: 1.5rem;
+}
+
+.map-intro p,
+.map-legend p,
+.map-accessibility p,
+.map-accessibility li{
+   color: var(--light-black);
+   font-size: 1.6rem;
+   line-height: 1.8;
+   text-transform: none;
+}
+
+.map-frame{
+   background: linear-gradient(135deg, #e8f5fb, #fff4f0);
+   border: .1rem solid #ddebf1;
+   border-radius: 1.5rem;
+   overflow: auto;
+   padding: 2rem;
+}
+
+.map-frame img{
+   display: block;
+   min-width: 90rem;
+   width: 100%;
+}
+
+.map-actions{
+   margin-top: 1.5rem;
+}
+
+.map-note{
+   color: var(--light-black);
+   font-size: 1.4rem;
+   margin-top: 1.5rem;
+   text-transform: none;
+}
+
+.legend-grid{
+   display: grid;
+   gap: 1.5rem;
+   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.legend-item{
+   align-items: center;
+   background: var(--light-bg);
+   border-radius: 1rem;
+   color: var(--light-black);
+   display: flex;
+   font-size: 1.5rem;
+   gap: 1rem;
+   padding: 1.2rem;
+   text-transform: none;
+}
+
+.legend-color{
+   border-radius: .6rem;
+   display: inline-block;
+   flex: 0 0 3rem;
+   height: 3rem;
+}
+
+.legend-color.building-a{ background: #247ba0; }
+.legend-color.building-b{ background: #fd5e42; }
+.legend-color.building-c{ background: #6c63ff; }
+.legend-color.building-d{ background: #2a9d8f; }
+.legend-color.building-g{ background: #f2c94c; }
+.legend-color.building-bu{ background: #8d6e63; }
+.legend-color.access{ background: #27ae60; }
+
+.map-accessibility ul{
+   margin-left: 2rem;
+}
+
+.map-accessibility li{
+   list-style: disc;
+   margin-bottom: 1rem;
+}
+
 
 /* register/login  */
 .divider:after,

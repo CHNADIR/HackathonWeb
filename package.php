@@ -60,6 +60,7 @@ if(isset($_GET['activite_id'])) {
       <a href="home.php">Accueil</a>
       <a href="about.php">À Propos</a>
       <a href="package.php" class="active">Les activités</a>
+      <a href="map.php">Map 3D</a>
       <a href="rentabilite.php">Rentabilité</a>
       <a href="book.php">Reservation</a>
    </nav>
@@ -400,6 +401,7 @@ if(isset($_GET['activite_id'])) {
          <a href="home.php"> <i class="fas fa-angle-right"></i> Accueil</a>
          <a href="about.php"> <i class="fas fa-angle-right"></i>À Propos </a>
          <a href="package.php"> <i class="fas fa-angle-right"></i> Activités</a>
+         <a href="map.php"> <i class="fas fa-angle-right"></i> Map 3D</a>
          <a href="rentabilite.php"> <i class="fas fa-angle-right"></i> Rentabilité</a>
          <a href="book.php"> <i class="fas fa-angle-right"></i> Réservation</a>
       </div>
