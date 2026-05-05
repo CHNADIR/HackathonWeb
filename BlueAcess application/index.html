@@ -3,106 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlueAccess - Maquette mobile</title>
+  <title>BlueAccess - Application mobile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="mockup-board" aria-label="Premieres pages BlueAccess">
-    <article class="phone-shot" aria-labelledby="home-caption">
-      <div class="phone">
-        <div class="notch" aria-hidden="true"></div>
-        <div class="status-bar" aria-hidden="true">
-          <span>9:41</span>
-          <span class="battery"></span>
-        </div>
+  <main class="app-page" aria-label="Application BlueAccess">
+    <section class="phone" aria-label="Prototype mobile BlueAccess">
+      <div class="phone-notch" aria-hidden="true"></div>
+      <div class="status-bar" aria-hidden="true">
+        <span>9:41</span>
+        <span class="battery"></span>
+      </div>
 
-        <section class="screen home-screen">
-          <header class="brand-row">
-            <div class="brand-lockup">
-              <span class="logo-mark">BA</span>
+      <div class="screens">
+        <section class="screen screen-home active" data-screen="home" aria-labelledby="home-title">
+          <header class="brand-header">
+            <div class="brand">
+              <span class="brand-logo">BA</span>
               <strong>BlueAccess</strong>
             </div>
-            <p class="university">UNIVERSIT&Eacute;<span>Paris 8</span><small>Vincennes - Saint-Denis</small></p>
+            <p class="university">UNIVERSITE<span>Paris 8</span><small>Vincennes - Saint-Denis</small></p>
           </header>
 
-          <div class="welcome">
+          <div class="home-copy">
             <p>Bienvenue</p>
-            <h1>Bonjour</h1>
-            <p>Je suis <strong>BlueAccess</strong>, votre guide d'accessibilit&eacute; sur le campus.</p>
+            <h1 id="home-title">Bonjour</h1>
+            <p>Je suis <strong>BlueAccess</strong>, votre guide d'accessibilite sur le campus.</p>
           </div>
 
-          <div class="home-illustration" aria-hidden="true">
-            <span class="big-pin"></span>
+          <div class="home-art" aria-hidden="true">
+            <span class="location-pin"></span>
           </div>
 
-          <div class="start-panel">
-            <a href="#profile-caption">Commencer <span>-&gt;</span></a>
+          <div class="start-card">
+            <button class="link-button" type="button" data-go="profile">Commencer <span>-&gt;</span></button>
           </div>
         </section>
-      </div>
-      <h2 id="home-caption">01 - ACCUEIL</h2>
-    </article>
 
-    <article class="phone-shot" aria-labelledby="profile-caption">
-      <div class="phone">
-        <div class="notch" aria-hidden="true"></div>
-        <div class="status-bar" aria-hidden="true">
-          <span>9:41</span>
-          <span class="battery"></span>
-        </div>
-
-        <section class="screen profile-screen">
+        <section class="screen screen-profile" data-screen="profile" aria-labelledby="profile-title">
           <div class="progress" aria-label="Etape 2 sur 3">
             <span></span>
             <span></span>
-            <span class="empty"></span>
-          </div>
-          <p class="step-label">&Eacute;tape 2 / 3</p>
-          <h1>Quel est votre <span>profil d'accessibilit&eacute; ?</span></h1>
-          <p class="lead">S&eacute;lectionnez un ou plusieurs profils pour adapter les itin&eacute;raires et l'interface.</p>
-
-          <div class="profile-list">
-            <label class="profile-card">
-              <span class="icon-badge">OE</span>
-              <span><strong>D&eacute;ficience visuelle</strong><small>Malvoyance, c&eacute;cit...</small></span>
-              <input type="checkbox" aria-label="Deficience visuelle">
-            </label>
-            <label class="profile-card">
-              <span class="icon-badge">SO</span>
-              <span><strong>D&eacute;ficience auditive</strong><small>Malentendance, l...</small></span>
-              <input type="checkbox" aria-label="Deficience auditive">
-            </label>
-            <label class="profile-card">
-              <span class="icon-badge">CO</span>
-              <span><strong>Trouble cognitif</strong><small>Rep&egrave;res simples...</small></span>
-              <input type="checkbox" aria-label="Trouble cognitif">
-            </label>
+            <span class="muted"></span>
           </div>
 
-          <button class="primary-button" type="button">Continuer <span>-&gt;</span></button>
-          <p class="profile-note">Modifiable &agrave; tout moment dans votre profil.</p>
+          <p class="step">Etape 2 / 3</p>
+          <h1 id="profile-title">Quel est votre <span>profil d'accessibilite ?</span></h1>
+          <p class="lead">Selectionnez un ou plusieurs profils pour adapter les itineraires et l'interface.</p>
+
+          <form class="profile-list">
+            <label class="profile-card selected">
+              <input type="checkbox" checked>
+              <span class="profile-icon">OE</span>
+              <span><strong>Deficience visuelle</strong><small>Malvoyance, cecite...</small></span>
+              <i></i>
+            </label>
+            <label class="profile-card">
+              <input type="checkbox">
+              <span class="profile-icon">SO</span>
+              <span><strong>Deficience auditive</strong><small>Malentendance, lecture...</small></span>
+              <i></i>
+            </label>
+            <label class="profile-card">
+              <input type="checkbox">
+              <span class="profile-icon">CO</span>
+              <span><strong>Trouble cognitif</strong><small>Reperes simples, guidage clair...</small></span>
+              <i></i>
+            </label>
+            <label class="profile-card">
+              <input type="checkbox">
+              <span class="profile-icon">PM</span>
+              <span><strong>Mobilite reduite</strong><small>Rampes, ascenseurs, PMR...</small></span>
+              <i></i>
+            </label>
+          </form>
+
+          <footer class="screen-footer">
+            <button class="primary-button" type="button" data-go="map">Continuer <span>-&gt;</span></button>
+            <p>Modifiable a tout moment dans votre profil.</p>
+          </footer>
         </section>
-      </div>
-      <h2 id="profile-caption">02 - PROFIL D'ACCESSIBILIT&Eacute;</h2>
-    </article>
 
-    <article class="phone-shot" aria-labelledby="plan-caption">
-      <div class="phone">
-        <div class="notch" aria-hidden="true"></div>
-        <div class="status-bar" aria-hidden="true">
-          <span>9:41</span>
-          <span class="battery"></span>
-        </div>
-
-        <section class="screen plan-screen">
-          <p class="campus-kicker">Paris 8 - Vincennes-Saint-Denis</p>
-          <h1>Plan du campus</h1>
+        <section class="screen screen-map" data-screen="map" aria-labelledby="map-title">
+          <p class="kicker">Paris 8 - Vincennes-Saint-Denis</p>
+          <h1 id="map-title">Plan du campus</h1>
 
           <label class="search-box">
-            <span aria-hidden="true">?</span>
+            <span>?</span>
             <input type="search" placeholder="Rechercher une salle (ex. A347)">
           </label>
 
@@ -112,94 +102,80 @@
             <button type="button">Niveau 2</button>
           </div>
 
-          <article class="map-card">
-            <div class="map-topbar">PARIS 8 &gt;&gt;&gt;<span>S'orienter &agrave; Paris 8</span><strong>NIVEAU 0</strong></div>
-            <div class="campus-plan" aria-label="Plan simplifie du campus">
-              <span class="map-zone zone-a"></span>
-              <span class="map-zone zone-b"></span>
-              <span class="map-zone zone-c"></span>
-              <span class="map-zone zone-d"></span>
-              <span class="map-path path-one"></span>
-              <span class="map-path path-two"></span>
-              <span class="map-path path-three"></span>
-              <span class="pin-small">A</span>
+          <article class="plan-card">
+            <div class="plan-banner">PARIS 8 <span>S'orienter a Paris 8</span></div>
+            <div class="campus-plan" aria-hidden="true">
+              <span class="building b1"></span>
+              <span class="building b2"></span>
+              <span class="building b3"></span>
+              <span class="building b4"></span>
+              <button class="map-pin">A</button>
             </div>
             <div class="legend">
-              <span><i class="dot dot-blue"></i> Accessible PMR</span>
-              <span><i class="dot dot-purple"></i> Ascenseur</span>
-              <span><i class="dot dot-green"></i> Ouvert</span>
+              <span><i></i>Accessible PMR</span>
+              <span><i></i>Ascenseur</span>
+              <span><i></i>Ouvert</span>
             </div>
           </article>
 
-          <button class="route-button" type="button">Tracer un itin&eacute;raire accessible</button>
+          <button class="primary-button route-button" type="button" data-go="campus">Tracer un itineraire accessible</button>
 
-          <nav class="bottom-nav" aria-label="Navigation">
-            <a href="#home-caption"><span>HOME</span>Accueil</a>
-            <a class="active" href="#plan-caption"><span>MAP</span>Carte</a>
-            <a href="#campus-caption"><span>PATH</span>Itin&eacute;raire</a>
-            <a href="#profile-caption"><span>PMR</span>Profil</a>
+          <nav class="bottom-nav" aria-label="Navigation principale">
+            <button type="button" data-go="home"><span>HOME</span>Accueil</button>
+            <button class="active" type="button" data-go="map"><span>MAP</span>Carte</button>
+            <button type="button" data-go="campus"><span>PATH</span>Itineraire</button>
+            <button type="button" data-go="profile"><span>USER</span>Profil</button>
           </nav>
         </section>
-      </div>
-      <h2 id="plan-caption">03 - PLAN DU CAMPUS</h2>
-    </article>
 
-    <article class="phone-shot" aria-labelledby="campus-caption">
-      <div class="phone">
-        <div class="notch" aria-hidden="true"></div>
-        <div class="status-bar" aria-hidden="true">
-          <span>9:41</span>
-          <span class="battery"></span>
-        </div>
-
-        <section class="screen campus-screen">
-          <p class="campus-kicker">Campus</p>
-          <h1>Carte du campus</h1>
+        <section class="screen screen-campus" data-screen="campus" aria-labelledby="campus-title">
+          <p class="kicker">Campus</p>
+          <h1 id="campus-title">Carte du campus</h1>
 
           <div class="search-row">
             <label class="search-box">
-              <span aria-hidden="true">?</span>
-              <input type="search" placeholder="Rechercher un b&acirc;timent...">
+              <span>?</span>
+              <input type="search" placeholder="Rechercher un batiment...">
             </label>
-            <button class="filter-button" type="button" aria-label="Filtres">=</button>
+            <button class="filter-button" type="button">CFG</button>
           </div>
 
-          <div class="quick-filters">
+          <div class="chips">
             <button class="active" type="button">Accessible</button>
             <button type="button">Signalement</button>
           </div>
 
-          <div class="campus-map">
+          <div class="campus-map" aria-hidden="true">
             <span class="road road-one"></span>
             <span class="road road-two"></span>
-            <span class="road road-three"></span>
-            <span class="building-card"></span>
-            <button class="bubble bubble-a" type="button">A</button>
-            <button class="bubble bubble-b" type="button">B</button>
-            <button class="bubble bubble-sos" type="button"><span>SOS</span></button>
-            <span class="sos-label">Alerter la s&eacute;curit&eacute;</span>
+            <span class="white-block"></span>
+            <button class="bubble bubble-a">A</button>
+            <button class="bubble bubble-b">B</button>
+            <button class="bubble bubble-sos">SOS</button>
+            <span class="sos-label">Alerter la securite</span>
 
             <article class="place-card">
               <span class="place-icon">PIN</span>
               <div>
-                <p>B&acirc;timent A - 120 m</p>
-                <h3>Biblioth&egrave;que universitaire</h3>
-                <span>Ascenseur &middot; Rampe &middot; Toilettes PMR</span>
+                <p>Batiment A - 120 m</p>
+                <h2>Bibliotheque universitaire</h2>
+                <span>Ascenseur - Rampe - Toilettes PMR</span>
               </div>
-              <a href="#plan-caption">Itin&eacute;raire accessible</a>
+              <button class="primary-button" type="button">Itineraire accessible</button>
             </article>
           </div>
 
-          <nav class="bottom-nav" aria-label="Navigation">
-            <a href="#home-caption"><span>HOME</span>Accueil</a>
-            <a class="active" href="#campus-caption"><span>MAP</span>Carte</a>
-            <a href="#plan-caption"><span>PATH</span>Itin&eacute;raire</a>
-            <a href="#profile-caption"><span>PMR</span>Profil</a>
+          <nav class="bottom-nav" aria-label="Navigation principale">
+            <button type="button" data-go="home"><span>HOME</span>Accueil</button>
+            <button class="active" type="button" data-go="map"><span>MAP</span>Carte</button>
+            <button type="button" data-go="campus"><span>PATH</span>Itineraire</button>
+            <button type="button" data-go="profile"><span>USER</span>Profil</button>
           </nav>
         </section>
       </div>
-      <h2 id="campus-caption">03 : PLAN DU CAMPUS</h2>
-    </article>
+    </section>
   </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
