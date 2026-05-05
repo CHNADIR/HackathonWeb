@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueAccess - Premières pages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="showcase" aria-labelledby="showcase-title">
+    <div class="showcase__intro">
+      <p class="eyebrow">Prototype mobile</p>
+      <h1 id="showcase-title">BlueAccess application</h1>
+      <p>Les premières pages de l'application d'accessibilité du campus Paris 8.</p>
+    </div>
+
+    <section class="phone-grid" aria-label="Aperçu des premières pages BlueAccess">
+      <article class="phone-card" aria-labelledby="screen-home-title">
+        <div class="phone">
+          <div class="phone__speaker" aria-hidden="true"></div>
+          <div class="phone__status">
+            <span>9:41</span>
+            <span class="status-pill"></span>
+          </div>
+          <section class="screen screen--home">
+            <header class="brand-row">
+              <div class="brand-lockup">
+                <div class="brand-logo" aria-hidden="true">BA</div>
+                <strong>BlueAccess</strong>
+              </div>
+              <p>UNIVERSITÉ<br><span>Paris 8</span></p>
+            </header>
+
+            <div class="welcome-copy">
+              <p>Bienvenue</p>
+              <h2 id="screen-home-title">Bonjour</h2>
+              <p>Je suis <strong>BlueAccess</strong>, votre guide d'accessibilité sur le campus.</p>
+            </div>
+
+            <div class="hero-pin" aria-hidden="true">
+              <div class="pin-shape">
+                <span></span>
+              </div>
+              <div class="pin-shadow"></div>
+            </div>
+
+            <a class="primary-action" href="#screen-profile-title">Commencer <span aria-hidden="true">-&gt;</span></a>
+          </section>
+        </div>
+        <h3>01 - Accueil</h3>
+      </article>
+
+      <article class="phone-card" aria-labelledby="screen-profile-title">
+        <div class="phone">
+          <div class="phone__speaker" aria-hidden="true"></div>
+          <div class="phone__status">
+            <span>9:41</span>
+            <span class="status-pill"></span>
+          </div>
+          <section class="screen screen--profile">
+            <div class="progress" aria-label="Étape 2 sur 3">
+              <span class="is-filled"></span>
+              <span class="is-filled"></span>
+              <span></span>
+            </div>
+            <p class="step-label">Étape 2 / 3</p>
+            <h2 id="screen-profile-title">Quel est votre <span>profil d'accessibilité ?</span></h2>
+            <p class="screen-lead">Sélectionnez un ou plusieurs profils pour adapter les itinéraires et l'interface.</p>
+
+            <form class="profile-list">
+              <label class="profile-option">
+                <span class="option-icon" aria-hidden="true">oeil</span>
+                <span><strong>Déficience visuelle</strong><small>Malvoyance, cécité...</small></span>
+                <input type="checkbox" name="profile" value="visuel">
+              </label>
+              <label class="profile-option">
+                <span class="option-icon" aria-hidden="true">son</span>
+                <span><strong>Déficience auditive</strong><small>Malentendance, lecture...</small></span>
+                <input type="checkbox" name="profile" value="auditif">
+              </label>
+              <label class="profile-option">
+                <span class="option-icon" aria-hidden="true">cog</span>
+                <span><strong>Trouble cognitif</strong><small>Repères simples, guidage clair...</small></span>
+                <input type="checkbox" name="profile" value="cognitif">
+              </label>
+            </form>
+
+            <button class="primary-action primary-action--button" type="button">Continuer <span aria-hidden="true">-&gt;</span></button>
+            <p class="profile-note">Modifiable à tout moment dans votre profil.</p>
+          </section>
+        </div>
+        <h3>02 - Profil d'accessibilité</h3>
+      </article>
+
+      <article class="phone-card" aria-labelledby="screen-plan-title">
+        <div class="phone">
+          <div class="phone__speaker" aria-hidden="true"></div>
+          <div class="phone__status">
+            <span>9:41</span>
+            <span class="status-pill"></span>
+          </div>
+          <section class="screen screen--map">
+            <p class="campus-label">Paris 8 - Vincennes-Saint-Denis</p>
+            <h2 id="screen-plan-title">Plan du campus</h2>
+
+            <label class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <input type="search" placeholder="Rechercher une salle (ex. A347)" aria-label="Rechercher une salle">
+            </label>
+
+            <div class="level-tabs" role="tablist" aria-label="Niveaux du campus">
+              <button class="is-active" type="button">Niveau 0</button>
+              <button type="button">Niveau 1</button>
+              <button type="button">Niveau 2</button>
+            </div>
+
+            <div class="map-card" aria-label="Carte du campus niveau 0">
+              <div class="map-banner">Paris 8 <span>S'orienter à Paris 8</span></div>
+              <svg viewBox="0 0 270 185" role="img" aria-label="Plan simplifié du campus">
+                <rect width="270" height="185" rx="18" fill="#eff7ed"></rect>
+                <path d="M13 47 C54 18 91 26 126 59 S210 57 254 24" fill="none" stroke="#cfdf9e" stroke-width="23" stroke-linecap="round"></path>
+                <path d="M25 150 C72 104 117 126 156 98 S210 58 245 89" fill="none" stroke="#c9d7ed" stroke-width="17" stroke-linecap="round"></path>
+                <path d="M34 62 L88 48 L102 101 L47 111 Z" fill="#ffe3a6" stroke="#d9b46e" stroke-width="3"></path>
+                <path d="M120 37 L187 48 L179 96 L112 86 Z" fill="#ffffff" stroke="#c1c7d6" stroke-width="3"></path>
+                <path d="M70 123 L138 112 L145 158 L81 166 Z" fill="#f8b8a8" stroke="#db806a" stroke-width="3"></path>
+                <path d="M174 112 L230 103 L237 153 L186 165 Z" fill="#c9e7ce" stroke="#87bd90" stroke-width="3"></path>
+                <circle cx="155" cy="82" r="16" fill="#557ee8"></circle>
+                <circle cx="155" cy="82" r="6" fill="#ffffff"></circle>
+              </svg>
+              <div class="legend">
+                <span><i class="legend-dot legend-dot--blue"></i>Accessible PMR</span>
+                <span><i class="legend-dot legend-dot--purple"></i>Ascenseur</span>
+                <span><i class="legend-dot legend-dot--green"></i>Ouvert</span>
+              </div>
+            </div>
+
+            <button class="primary-action primary-action--button" type="button">Tracer un itinéraire accessible</button>
+            <nav class="bottom-nav" aria-label="Navigation principale">
+              <a href="#screen-home-title">Accueil</a>
+              <a class="is-active" href="#screen-plan-title">Carte</a>
+              <a href="#screen-route-title">Itinéraire</a>
+              <a href="#screen-route-title">Profil</a>
+            </nav>
+          </section>
+        </div>
+        <h3>03 - Plan du campus</h3>
+      </article>
+
+      <article class="phone-card" aria-labelledby="screen-route-title">
+        <div class="phone">
+          <div class="phone__speaker" aria-hidden="true"></div>
+          <div class="phone__status">
+            <span>9:41</span>
+            <span class="status-pill"></span>
+          </div>
+          <section class="screen screen--campus">
+            <p class="campus-label">Campus</p>
+            <h2 id="screen-route-title">Carte du campus</h2>
+
+            <div class="search-row">
+              <label class="search-box">
+                <span aria-hidden="true">⌕</span>
+                <input type="search" placeholder="Rechercher un bâtiment..." aria-label="Rechercher un bâtiment">
+              </label>
+              <button class="filter-button" aria-label="Filtres" type="button">≡</button>
+            </div>
+
+            <div class="quick-filters">
+              <button class="is-active" type="button">♿ Accessible</button>
+              <button type="button">△ Signalement</button>
+            </div>
+
+            <div class="campus-map" aria-label="Carte interactive du campus">
+              <div class="map-line map-line--one"></div>
+              <div class="map-line map-line--two"></div>
+              <div class="building building--empty"></div>
+              <button class="bubble bubble--a" type="button">A</button>
+              <button class="bubble bubble--b" type="button">B</button>
+              <button class="bubble bubble--sos" type="button">SOS</button>
+              <div class="sos-label">Alerter la sécurité</div>
+
+              <article class="place-card">
+                <div class="place-icon" aria-hidden="true">⌖</div>
+                <div>
+                  <p>Bâtiment A - 120 m</p>
+                  <h3>Bibliothèque universitaire</h3>
+                  <span>Ascenseur · Rampe · Toilettes PMR</span>
+                </div>
+                <button class="primary-action primary-action--button" type="button">Itinéraire accessible</button>
+              </article>
+            </div>
+
+            <nav class="bottom-nav" aria-label="Navigation principale">
+              <a href="#screen-home-title">Accueil</a>
+              <a class="is-active" href="#screen-route-title">Carte</a>
+              <a href="#screen-plan-title">Itinéraire</a>
+              <a href="#screen-profile-title">Profil</a>
+            </nav>
+          </section>
+        </div>
+        <h3>03 - Plan du campus</h3>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
