@@ -10,75 +10,59 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="page-shell">
-    <section class="phone">
-      <div class="phone-notch" aria-hidden="true"></div>
-      <div class="status-bar" aria-hidden="true">
-        <span>9:41</span>
-        <span class="battery"></span>
-      </div>
-
-      <section class="screen profile-screen">
-        <div class="progress" aria-label="Etape 2 sur 3">
-          <span></span>
-          <span></span>
-          <span class="muted"></span>
-        </div>
-
-        <p class="step-label">Etape 2 / 3</p>
-        <h1>Quel est votre <span>profil d'accessibilite ?</span></h1>
-        <p class="lead">Selectionnez un ou plusieurs profils pour adapter les itineraires et l'interface.</p>
-
-        <form class="profile-list">
-          <label class="profile-card">
-            <span class="icon-badge">OE</span>
-            <span>
-              <strong>Deficience visuelle</strong>
-              <small>Malvoyance, cecite...</small>
-            </span>
-            <input type="checkbox" aria-label="Deficience visuelle">
-          </label>
-
-          <label class="profile-card">
-            <span class="icon-badge">SO</span>
-            <span>
-              <strong>Deficience auditive</strong>
-              <small>Malentendance, lecture...</small>
-            </span>
-            <input type="checkbox" aria-label="Deficience auditive">
-          </label>
-
-          <label class="profile-card">
-            <span class="icon-badge">CO</span>
-            <span>
-              <strong>Trouble cognitif</strong>
-              <small>Reperes simples, guidage clair...</small>
-            </span>
-            <input type="checkbox" aria-label="Trouble cognitif">
-          </label>
-
-          <label class="profile-card">
-            <span class="icon-badge">PM</span>
-            <span>
-              <strong>Mobilite reduite</strong>
-              <small>Rampes, ascenseurs, toilettes PMR...</small>
-            </span>
-            <input type="checkbox" aria-label="Mobilite reduite">
-          </label>
-        </form>
-
-        <footer class="profile-footer">
-          <a class="primary-button" href="carte.html">Continuer <span>-&gt;</span></a>
-          <p>Modifiable a tout moment dans votre profil.</p>
-        </footer>
-      </section>
-    </section>
-
-    <nav class="page-links" aria-label="Pages BlueAccess">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-logo">BA</span>
+      <span><strong>BlueAccess</strong><small>Universite Paris 8</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a class="active" href="profil.html">Profil</a>
       <a href="carte.html">Carte</a>
     </nav>
+  </header>
+
+  <main class="page-content">
+    <section class="page-heading">
+      <p class="eyebrow">Etape 2 / 3</p>
+      <h1>Quel est votre profil d'accessibilite ?</h1>
+      <p>Selectionnez un ou plusieurs profils pour adapter les itineraires, les contrastes, les instructions et les alertes.</p>
+    </section>
+
+    <section class="profile-grid" aria-label="Choix du profil">
+      <label class="profile-card">
+        <input type="checkbox" name="profile" value="visuelle">
+        <span class="profile-icon">OE</span>
+        <strong>Deficience visuelle</strong>
+        <small>Guidage vocal, contrastes eleves, grands textes et reperes clairs.</small>
+      </label>
+
+      <label class="profile-card">
+        <input type="checkbox" name="profile" value="auditive">
+        <span class="profile-icon">SO</span>
+        <strong>Deficience auditive</strong>
+        <small>Alertes visuelles, messages explicites et informations sans dependance au son.</small>
+      </label>
+
+      <label class="profile-card">
+        <input type="checkbox" name="profile" value="cognitive">
+        <span class="profile-icon">CO</span>
+        <strong>Trouble cognitif</strong>
+        <small>Mode simple, phrases courtes, pictogrammes et etapes une par une.</small>
+      </label>
+
+      <label class="profile-card">
+        <input type="checkbox" name="profile" value="mobilite" checked>
+        <span class="profile-icon">PM</span>
+        <strong>Mobilite reduite</strong>
+        <small>Eviter les escaliers, privilegier rampes, ascenseurs et toilettes PMR.</small>
+      </label>
+    </section>
+
+    <section class="actions-bar">
+      <a class="secondary-button" href="index.html">Retour</a>
+      <a class="primary-button" href="carte.html">Continuer vers la carte</a>
+    </section>
   </main>
 </body>
 </html>

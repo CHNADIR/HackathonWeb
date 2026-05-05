@@ -10,52 +10,58 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="page-shell page-home">
-    <section class="phone-card" aria-labelledby="home-title">
-      <div class="phone-frame">
-        <div class="notch" aria-hidden="true"></div>
-        <div class="status-bar" aria-hidden="true">
-          <span>9:41</span>
-          <span class="battery"></span>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Accueil BlueAccess">
+      <span class="brand-logo">BA</span>
+      <span>
+        <strong>BlueAccess</strong>
+        <small>Universite Paris 8</small>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a class="active" href="index.html">Accueil</a>
+      <a href="profil.html">Profil d'accessibilite</a>
+      <a href="carte.html">Plan du campus</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero page-section" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Bienvenue</p>
+        <h1 id="home-title">Bonjour, je suis BlueAccess.</h1>
+        <p>
+          Votre guide d'accessibilite sur le campus Paris 8. Trouvez les batiments,
+          services, ascenseurs, rampes et itineraires adaptes a votre situation.
+        </p>
+        <div class="actions">
+          <a class="primary-button" href="profil.html">Commencer</a>
+          <a class="secondary-button" href="carte.html">Voir le plan du campus</a>
         </div>
-
-        <section class="screen home-screen">
-          <header class="brand-row">
-            <a class="brand" href="index.html">
-              <span class="brand-logo">BA</span>
-              <strong>BlueAccess</strong>
-            </a>
-            <p class="university">UNIVERSIT&Eacute;<span>Paris 8</span><small>Vincennes - Saint-Denis</small></p>
-          </header>
-
-          <div class="welcome-block">
-            <p>Bienvenue</p>
-            <h1 id="home-title">Bonjour</h1>
-            <p>Je suis <strong>BlueAccess</strong>, votre guide d'accessibilit&eacute; sur le campus.</p>
-          </div>
-
-          <div class="pin-hero" aria-hidden="true">
-            <span class="pin"></span>
-          </div>
-
-          <div class="start-panel">
-            <a class="start-link" href="profil.html">Commencer <span>-&gt;</span></a>
-          </div>
-        </section>
       </div>
-      <p class="page-caption">01 - ACCUEIL</p>
+
+      <div class="hero-visual" aria-hidden="true">
+        <span class="pin"></span>
+      </div>
     </section>
 
-    <aside class="web-context">
-      <p class="eyebrow">Application web BlueAccess</p>
-      <h2>Orientation accessible pour les &eacute;tudiants de Paris 8</h2>
-      <p>Cette page correspond au premier &eacute;cran de l'application. Utilisez le bouton commencer pour aller vers la page profil.</p>
-      <nav class="web-links" aria-label="Pages BlueAccess">
-        <a class="is-active" href="index.html">Accueil</a>
-        <a href="profil.html">Profil d'accessibilit&eacute;</a>
-        <a href="carte.html">Plan du campus</a>
-      </nav>
-    </aside>
+    <section class="feature-grid page-section" aria-label="Fonctionnalites principales">
+      <article>
+        <span>01</span>
+        <h2>Carte interactive</h2>
+        <p>Visualisez les batiments, services, entrees accessibles, rampes et ascenseurs.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h2>Profil adapte</h2>
+        <p>Selectionnez vos besoins pour adapter les trajets et l'interface.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h2>Itineraire accessible</h2>
+        <p>Preparez un chemin clair vers la BU, la scolarite, la MDE ou les salles.</p>
+      </article>
+    </section>
   </main>
 </body>
 </html>
