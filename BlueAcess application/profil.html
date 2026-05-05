@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueAccess - Profil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand__logo">BA</span>
+      <span><strong>BlueAccess</strong><small>Universite Paris 8</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a class="is-active" href="profil.html">Profil</a>
+      <a href="carte.html">Carte</a>
+      <a href="itineraire.html">Itineraire</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="page-heading">
+      <p class="eyebrow">Profil d'accessibilite</p>
+      <h1>Adapter BlueAccess a vos besoins</h1>
+      <p>Selectionnez un ou plusieurs profils pour personnaliser les trajets, les informations et les alertes.</p>
+    </section>
+
+    <section class="profile-grid" aria-label="Choix du profil">
+      <article class="profile-card">
+        <span>PMR</span>
+        <h2>Mobilite reduite</h2>
+        <p>Eviter les escaliers, privilegier les rampes, ascenseurs, passages larges et toilettes PMR.</p>
+      </article>
+      <article class="profile-card">
+        <span>VUE</span>
+        <h2>Deficience visuelle</h2>
+        <p>Afficher des instructions claires, des textes lisibles, un contraste fort et des reperes simples.</p>
+      </article>
+      <article class="profile-card">
+        <span>SON</span>
+        <h2>Deficience auditive</h2>
+        <p>Remplacer les alertes sonores par des messages visibles, pictogrammes et notifications textuelles.</p>
+      </article>
+      <article class="profile-card">
+        <span>ABC</span>
+        <h2>Troubles cognitifs</h2>
+        <p>Simplifier les etapes, reduire les informations et afficher un guidage rassurant.</p>
+      </article>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <h2>Profil recommande</h2>
+        <p>Pour commencer, utilisez le profil mobilite reduite afin de calculer des trajets sans escaliers.</p>
+      </div>
+      <a class="button button--primary" href="carte.html">Continuer vers la carte</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>BlueAccess - Prototype web pour l'Universite Paris 8</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,534 @@
+:root {
+  --blue: #2f7df0;
+  --blue-dark: #1f55c7;
+  --blue-light: #eaf2ff;
+  --text: #17223a;
+  --muted: #66728f;
+  --line: #dfe7f5;
+  --white: #ffffff;
+  --background: #f6f9ff;
+  --green: #2ca86f;
+  --red: #ea5f5b;
+  --shadow: 0 16px 38px rgba(38, 72, 140, .12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--background);
+  font-family: Inter, Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px clamp(18px, 5vw, 72px);
+  background: rgba(255, 255, 255, .92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), #6b76e6);
+  border-radius: 14px;
+  box-shadow: 0 10px 22px rgba(47, 125, 240, .25);
+}
+
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.main-nav a {
+  padding: 10px 14px;
+  color: #4c5872;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #fff;
+  background: var(--blue);
+}
+
+.page {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 44px 0 56px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.hero-card,
+.info-card,
+.profile-card,
+.map-card,
+.place-card,
+.route-card,
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.hero-card {
+  padding: clamp(30px, 5vw, 58px);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+.hero h1,
+.page-title h1 {
+  max-width: 800px;
+  margin-bottom: 18px;
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: .98;
+  letter-spacing: -2.5px;
+}
+
+.hero h1 span {
+  color: var(--blue);
+}
+
+.hero p,
+.page-title p,
+.info-card p,
+.profile-card p,
+.place-card p,
+.route-card p,
+.step-card p {
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+.hero-actions,
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 15px;
+  font-weight: 900;
+}
+
+.primary-button {
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), #6573dd);
+  box-shadow: 0 12px 22px rgba(47, 125, 240, .25);
+}
+
+.secondary-button {
+  color: var(--blue);
+  background: var(--blue-light);
+}
+
+.hero-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.info-card {
+  padding: 24px;
+}
+
+.info-card strong {
+  display: block;
+  color: var(--blue);
+  font-size: 34px;
+}
+
+.section-title {
+  margin: 42px 0 22px;
+}
+
+.section-title h2,
+.page-title h1 {
+  margin-bottom: 10px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.profile-card,
+.map-card,
+.place-card,
+.route-card,
+.step-card {
+  padding: 22px;
+}
+
+.profile-card {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.profile-icon,
+.place-icon,
+.step-number {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  color: var(--blue);
+  background: var(--blue-light);
+  border-radius: 18px;
+  font-weight: 900;
+}
+
+.profile-card.is-selected {
+  border-color: rgba(47, 125, 240, .45);
+  background: #fbfdff;
+}
+
+.profile-card h3,
+.place-card h2,
+.route-card h2,
+.step-card h3 {
+  margin-bottom: 8px;
+}
+
+.page-title {
+  margin-bottom: 26px;
+}
+
+.map-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.tool-card {
+  display: grid;
+  gap: 18px;
+}
+
+.search-box {
+  display: grid;
+  gap: 8px;
+}
+
+.search-box span,
+.tool-title {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.search-box input,
+.route-form select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  color: var(--text);
+  background: var(--background);
+  border: 1px solid transparent;
+  border-radius: 14px;
+  outline: none;
+  font-weight: 700;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chips button,
+.tag {
+  min-height: 34px;
+  padding: 0 12px;
+  color: #34415e;
+  background: var(--blue-light);
+  border: 0;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.chips button.active,
+.tag.active {
+  color: #fff;
+  background: var(--blue);
+}
+
+.campus-map {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  background:
+    linear-gradient(25deg, transparent 18%, rgba(88, 130, 215, .18) 18% 22%, transparent 22%),
+    linear-gradient(125deg, transparent 34%, rgba(88, 130, 215, .18) 34% 38%, transparent 38%),
+    linear-gradient(80deg, #f3f8ef 0 35%, #fff 35% 41%, #dff0d8 41% 60%, #f6efe3 60%);
+  border-radius: 22px;
+}
+
+.campus-map::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  padding-left: 14px;
+  color: #fff;
+  background: #ef3028;
+  content: "PARIS 8 >>> S'orienter a Paris 8";
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 36px;
+}
+
+.building {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  color: #5d6982;
+  background: rgba(255, 255, 255, .92);
+  border: 2px solid rgba(113, 129, 160, .18);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(60, 75, 116, .10);
+  font-weight: 900;
+}
+
+.building-a {
+  top: 120px;
+  left: 80px;
+  width: 170px;
+  height: 92px;
+  transform: rotate(-7deg);
+}
+
+.building-b {
+  top: 95px;
+  right: 70px;
+  width: 150px;
+  height: 110px;
+  transform: rotate(8deg);
+}
+
+.building-c {
+  bottom: 100px;
+  left: 210px;
+  width: 210px;
+  height: 86px;
+  transform: rotate(-6deg);
+}
+
+.marker {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  color: #fff;
+  background: var(--blue);
+  border: 5px solid rgba(255, 255, 255, .85);
+  border-radius: 50%;
+  box-shadow: 0 12px 24px rgba(47, 125, 240, .22);
+  font-weight: 900;
+}
+
+.marker-bu {
+  top: 45%;
+  left: 46%;
+}
+
+.marker-a {
+  top: 58%;
+  left: 58%;
+}
+
+.marker-g {
+  top: 62%;
+  left: 30%;
+}
+
+.marker-sos {
+  top: 20%;
+  right: 10%;
+  width: 64px;
+  height: 64px;
+  background: var(--red);
+  border-color: #ffe0dc;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.route-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.route-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 900;
+}
+
+.steps {
+  display: grid;
+  gap: 14px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step-card {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 16px;
+}
+
+.site-footer {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 26px 0 40px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .site-header,
+  .hero,
+  .map-layout,
+  .route-form {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .main-nav {
+    width: 100%;
+  }
+
+  .main-nav a {
+    flex: 1;
+    text-align: center;
+  }
+
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .page {
+    width: min(100% - 24px, 1180px);
+    padding-top: 28px;
+  }
+
+  .hero-card,
+  .info-card,
+  .profile-card,
+  .map-card,
+  .place-card,
+  .route-card,
+  .step-card {
+    border-radius: 22px;
+  }
+}
